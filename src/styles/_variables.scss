@@ -1,0 +1,27 @@
+$green: #00B84F;
+
+$primary: $green;
+$secondary: #464E66;
+$tertiary: #2D3649;
+$info: #697794;
+$grey: #E5E5E5;
+$dark: #3B3B3B;
+$light: #EDEFF2;
+
+$theme-colors: ();
+$theme-colors: map-merge((
+  "primary": $primary,
+  "secondary": $secondary,
+  "tertiary": $tertiary,
+  "info": $info,
+  "grey": $grey,
+  "dark": $dark,
+  "light": $light
+), $theme-colors);
+
+$body-bg: $light;
+$body-color: $dark;
+
+$font-family-sans-serif: 'Roboto', Helvetica, Arial, sans-serif;
+
+$headings-font-family: Ubuntu, Roboto, Helvetica, Arial, sans-serif;

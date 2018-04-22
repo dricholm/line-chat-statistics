@@ -1,14 +1,16 @@
 {
   "name": "line-chat-statistics",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "license": "MIT",
   "scripts": {
+    "precommit": "lint-staged",
     "ng": "ng",
     "start": "ng serve",
     "build": "ng build --prod",
     "test": "ng test",
     "lint": "ng lint",
-    "e2e": "ng e2e"
+    "e2e": "ng e2e",
+    "coverage": "ng test --watch=false --code-coverage"
   },
   "private": true,
   "dependencies": {
@@ -32,7 +34,9 @@
     "@types/jasmine": "~2.8.3",
     "@types/jasminewd2": "~2.0.2",
     "@types/node": "~6.0.60",
+    "bootstrap": "^4.1.0",
     "codelyzer": "^4.0.1",
+    "husky": "^0.14.3",
     "jasmine-core": "~2.8.0",
     "jasmine-spec-reporter": "~4.2.1",
     "karma": "~2.0.0",
@@ -40,9 +44,15 @@
     "karma-coverage-istanbul-reporter": "^1.2.1",
     "karma-jasmine": "~1.1.0",
     "karma-jasmine-html-reporter": "^0.2.2",
+    "lint-staged": "^7.0.4",
+    "prettier": "^1.12.1",
     "protractor": "~5.1.2",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
+  },
+  "lint-staged": {
+    "src/**/*.{css,json,ts}": ["prettier --single-quote --write", "git add"],
+    "src/**/*.ts": ["npm run lint"]
   }
 }
