@@ -47,12 +47,20 @@
     "lint-staged": "^7.0.4",
     "prettier": "^1.12.1",
     "protractor": "~5.1.2",
+    "stylelint": "^9.2.0",
+    "stylelint-config-recommended": "^2.1.0",
+    "stylelint-order": "^0.8.1",
     "ts-node": "~4.1.0",
     "tslint": "~5.9.1",
     "typescript": "~2.5.3"
   },
   "lint-staged": {
-    "src/**/*.{css,json,ts}": ["prettier --single-quote --write", "git add"],
-    "src/**/*.ts": ["npm run lint"]
+    "src/**/*.{css,json,ts}": [
+      "prettier --single-quote --write",
+      "git add"
+    ],
+    "src/**/*.ts": [
+      "npm run lint"
+    ]
   }
 }

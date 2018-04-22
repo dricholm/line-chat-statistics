@@ -1,6 +1,8 @@
+@import '~styles/variables';
+
 .nav-item,
 .nav-button {
-  font-family: 'Comfortaa', Helvetica, Arial, sans-serif;
+  font-family: Comfortaa, Helvetica, Arial, sans-serif;
   text-transform: uppercase;
 }
 
@@ -20,7 +22,7 @@
     transform: translateX(0);
   }
 
-  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+  @media (max-width: map-get($grid-breakpoints, "lg")) {
     align-items: normal;
     flex-direction: column;
     height: 100vh;
@@ -40,11 +42,10 @@
   left: 0;
   position: fixed;
   top: 0;
-  transition: opacity 400ms ease-in-out;
   width: 100vw;
   z-index: -1;
 
-  @media (min-width: map-get($grid-breakpoints, 'lg')) {
+  @media (min-width: map-get($grid-breakpoints, "lg")) {
     display: none;
   }
 }

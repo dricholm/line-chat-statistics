@@ -22,6 +22,9 @@ $theme-colors: map-merge((
 $body-bg: $light;
 $body-color: $dark;
 
-$font-family-sans-serif: 'Roboto', Helvetica, Arial, sans-serif;
+$font-family-sans-serif: Roboto, Helvetica, Arial, sans-serif;
 
 $headings-font-family: Ubuntu, Roboto, Helvetica, Arial, sans-serif;
+
+@import "node_modules/bootstrap/scss/functions";
+@import "node_modules/bootstrap/scss/variables";

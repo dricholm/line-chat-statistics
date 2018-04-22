@@ -1,28 +1,23 @@
-@import url('https://fonts.googleapis.com/css?family=Roboto');
-@import url('https://fonts.googleapis.com/css?family=Ubuntu');
-@import url('https://fonts.googleapis.com/css?family=Comfortaa');
-@import url('https://fonts.googleapis.com/css?family=PT+Sans');
+@import url("https://fonts.googleapis.com/css?family=Roboto");
+@import url("https://fonts.googleapis.com/css?family=Ubuntu");
+@import url("https://fonts.googleapis.com/css?family=Comfortaa");
+@import url("https://fonts.googleapis.com/css?family=PT+Sans");
 
-@import 'variables';
+@import "variables";
+@import "node_modules/bootstrap/scss/mixins";
 
-@import 'node_modules/bootstrap/scss/functions';
-@import 'node_modules/bootstrap/scss/variables';
-@import 'node_modules/bootstrap/scss/mixins';
-
-@import 'node_modules/bootstrap/scss/buttons';
-@import 'node_modules/bootstrap/scss/grid';
-@import 'node_modules/bootstrap/scss/nav';
-@import 'node_modules/bootstrap/scss/navbar';
-@import 'node_modules/bootstrap/scss/reboot';
-@import 'node_modules/bootstrap/scss/type';
-@import 'node_modules/bootstrap/scss/utilities';
+@import "node_modules/bootstrap/scss/buttons";
+@import "node_modules/bootstrap/scss/grid";
+@import "node_modules/bootstrap/scss/nav";
+@import "node_modules/bootstrap/scss/navbar";
+@import "node_modules/bootstrap/scss/reboot";
+@import "node_modules/bootstrap/scss/type";
+@import "node_modules/bootstrap/scss/utilities";
 
 body {
-  font-family: 'Roboto', Helvetica, Arial, sans-serif;
+  font-family: Roboto, Helvetica, Arial, sans-serif;
 }
 
 button {
-  font-family: 'PT Sans', Helvetica, Arial, sans-serif;
+  font-family: PT Sans, Helvetica, Arial, sans-serif;
 }
-
-@import 'nav';
