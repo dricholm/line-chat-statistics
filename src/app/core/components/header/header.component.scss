@@ -1,0 +1,14 @@
+@import '~styles/variables';
+
+:host {
+  background-color: $secondary;
+  display: block;
+}
+
+a {
+  color: $white;
+
+  &:hover {
+    text-decoration: none;
+  }
+}
