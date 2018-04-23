@@ -1,4 +1,4 @@
-<button class="nav-button mt-4 ml-3 text-info d-block d-lg-none" type="button" (click)="toggleNav()">
+<button class="nav-button p-4 text-info d-block d-lg-none" type="button" (click)="toggleNav()">
   Menu
 </button>
 <nav class="navbar navbar-expand-lg navbar-dark p-4 p-lg-2" [ngClass]="{ 'show': isShown }">
@@ -20,11 +20,11 @@
     </li>
   </ul>
   <ul class="navbar-nav">
-    <li class="nav-item">
-      <a class="nav-link" href="#" (click)="menuClick()">English</a>
+    <li>
+      <a class="nav-link font-weight-light" href="#" (click)="menuClick()">English</a>
     </li>
-    <li class="nav-item">
-      <a class="nav-link" href="#" (click)="menuClick()">日本語</a>
+    <li>
+      <a class="nav-link font-weight-light" href="#" (click)="menuClick()">日本語</a>
     </li>
   </ul>
 </nav>

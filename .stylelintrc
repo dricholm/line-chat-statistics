@@ -10,6 +10,6 @@
     ],
     "block-no-empty": null,
     "order/properties-alphabetical-order": true,
-    "string-quotes": "double"
+    "string-quotes": "single"
   }
 }

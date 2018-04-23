@@ -1,0 +1,13 @@
+@import '~styles/variables';
+
+:host {
+  background-color: $dark;
+  color: $grey;
+  display: flex;
+  font-weight: $font-weight-light;
+}
+
+a {
+  color: $grey;
+  font-weight: $font-weight-normal;
+}
