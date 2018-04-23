@@ -21,3 +21,10 @@ body {
 .btn-lg {
   font-family: 'Open Sans', Helvetica, Arial, sans-serif;
 }
+
+.mobile-block {
+  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+    display: block;
+    width: 100%;
+  }
+}

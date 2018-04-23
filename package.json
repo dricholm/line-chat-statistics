@@ -55,7 +55,7 @@
     "typescript": "~2.5.3"
   },
   "lint-staged": {
-    "src/**/*.{css,json,ts}": [
+    "src/**/*.{css,json,scss,ts}": [
       "prettier --single-quote --write",
       "git add"
     ],

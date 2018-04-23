@@ -4,6 +4,7 @@ import { HomeComponent } from './home.component';
 import { NavComponent } from '@app/core/components/nav/nav.component';
 import { FooterComponent } from '@app/core/components/footer/footer.component';
 import { AboutComponent } from '@app/core/components/about/about.component';
+import { UploadComponent } from '@app/core/components/upload/upload.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -15,6 +16,7 @@ describe('HomeComponent', () => {
         HomeComponent,
         NavComponent,
         AboutComponent,
+        UploadComponent,
         FooterComponent,
       ],
     }).compileComponents();
