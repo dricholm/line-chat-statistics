@@ -47,6 +47,11 @@
   position: absolute;
   top: 0;
   width: 100%;
+
+  &:hover + .file-browse {
+    background-color: darken($info, 7.5%);
+    border-color: darken($info, 10%);
+  }
 }
 
 .file-text {

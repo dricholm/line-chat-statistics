@@ -6,10 +6,10 @@
   <div class="file-container">
     <div class="bg-light rounded p-3 file-box">
       <div class="file-upload mr-0 mr-lg-3 mb-3 mb-lg-0">
-        <button class="btn btn-info btn-lg btn-block px-5" type="button">
+        <input type="file" class="file-input" name="log" (change)="onChange($event)">
+        <button class="file-browse btn btn-info btn-lg btn-block px-5" type="button">
           Browse
         </button>
-        <input type="file" class="file-input" name="log" (change)="onChange($event)">
       </div>
       <p class="align-self-center file-text mb-3 mb-lg-0">
         {{ file?.name || 'Select a chat log file' }}
