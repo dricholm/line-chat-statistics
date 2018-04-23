@@ -3,6 +3,19 @@
 :host {
   background-color: $secondary;
   display: flex;
+
+  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+    min-height: 100vh;
+  }
+}
+
+.file-container {
+  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+    justify-content: center;
+  }
 }
 
 .file-box {
@@ -42,6 +55,10 @@
   overflow: hidden;
   text-overflow: ellipsis;
   white-space: nowrap;
+
+  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+    text-align: center;
+  }
 }
 
 .file-submit {

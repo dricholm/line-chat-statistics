@@ -1,0 +1,7 @@
+@import '~styles/variables';
+
+section {
+  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+    min-height: 100vh;
+  }
+}
