@@ -1,8 +1,23 @@
-import { Component } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
+import { PageScrollConfig } from 'ngx-page-scroll';
 
 @Component({
   selector: 'lcs-root',
   styleUrls: ['./app.component.scss'],
   templateUrl: './app.component.html',
 })
-export class AppComponent {}
+export class AppComponent implements OnInit {
+  ngOnInit(): void {
+    this.setupPageScroll();
+  }
+
+  private setupPageScroll(): void {
+    PageScrollConfig.defaultDuration = 750;
+    PageScrollConfig.defaultEasingLogic = {
+      ease: (t: number, b: number, c: number, d: number): number => {
+        t /= d;
+        return -c * t * (t - 2) + b;
+      },
+    };
+  }
+}
