@@ -1,0 +1,10 @@
+@import '~styles/variables';
+
+:host {
+  background-color: $secondary;
+  display: block;
+
+  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+    min-height: 100vh;
+  }
+}

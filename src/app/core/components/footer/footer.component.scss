@@ -2,7 +2,7 @@
 
 :host {
   background-color: $dark;
-  color: $grey;
+  color: darken($grey, 15%);
   display: flex;
   font-weight: $font-weight-light;
 }

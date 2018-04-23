@@ -6,6 +6,9 @@ import { NavComponent } from '@app/core/components/nav/nav.component';
 import { AboutComponent } from '@app/core/components/about/about.component';
 import { FooterComponent } from '@app/core/components/footer/footer.component';
 import { UploadComponent } from '@app/core/components/upload/upload.component';
+import { FaqsComponent } from '@app/core/components/faqs/faqs.component';
+import { ContactComponent } from '@app/core/components/contact/contact.component';
+import { LandingHeaderComponent } from '@app/core/components/landing-header/landing-header.component';
 
 @NgModule({
   declarations: [
@@ -14,6 +17,9 @@ import { UploadComponent } from '@app/core/components/upload/upload.component';
     AboutComponent,
     FooterComponent,
     UploadComponent,
+    FaqsComponent,
+    ContactComponent,
+    LandingHeaderComponent,
   ],
   exports: [FooterComponent],
   imports: [CommonModule],
