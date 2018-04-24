@@ -1,4 +1,7 @@
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
+
+import { ParseService } from '@app/core/services/parse.service';
 
 @Component({
   selector: 'lcs-upload',
@@ -8,12 +11,21 @@ import { Component } from '@angular/core';
 export class UploadComponent {
   file: File;
 
+  constructor(private parseService: ParseService, private router: Router) {}
+
   onChange($event): void {
     this.file = $event.target.files[0];
   }
 
   onParse(): void {
-    // TODO: Implement file parsing
-    console.log('Submit file', this.file);
+    this.parseService.parseFile(this.file).subscribe(
+      () => {
+        this.router.navigateByUrl('stats');
+      },
+      error => {
+        // TODO: Display error message
+        console.log('Error during parsing', error);
+      }
+    );
   }
 }

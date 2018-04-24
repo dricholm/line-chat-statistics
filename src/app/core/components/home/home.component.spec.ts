@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { HomeComponent } from './home.component';
 import { LandingHeaderComponent } from '@app/core/components/landing-header/landing-header.component';
@@ -6,6 +7,8 @@ import { NavComponent } from '@app/core/components/nav/nav.component';
 import { SectionComponent } from '@app/core/components/section/section.component';
 import { UploadComponent } from '@app/core/components/upload/upload.component';
 import { FooterComponent } from '@app/core/components/footer/footer.component';
+import { ParseService } from '@app/core/services/parse.service';
+import { DatabaseService } from '@app/core/services/database.service';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -21,6 +24,8 @@ describe('HomeComponent', () => {
         UploadComponent,
         FooterComponent,
       ],
+      imports: [RouterTestingModule],
+      providers: [DatabaseService, ParseService],
     }).compileComponents();
   }));
 

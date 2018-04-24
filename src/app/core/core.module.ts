@@ -10,6 +10,9 @@ import { LandingHeaderComponent } from '@app/core/components/landing-header/land
 import { NotFoundComponent } from '@app/core/components/not-found/not-found.component';
 import { HeaderComponent } from '@app/core/components/header/header.component';
 import { SectionComponent } from '@app/core/components/section/section.component';
+import { ParseService } from './services/parse.service';
+import { DatabaseService } from './services/database.service';
+import { StatsComponent } from './components/stats/stats.component';
 
 @NgModule({
   declarations: [
@@ -21,8 +24,10 @@ import { SectionComponent } from '@app/core/components/section/section.component
     NotFoundComponent,
     HeaderComponent,
     SectionComponent,
+    StatsComponent,
   ],
   exports: [HeaderComponent, FooterComponent],
   imports: [CommonModule, SharedModule],
+  providers: [ParseService, DatabaseService],
 })
 export class CoreModule {}
