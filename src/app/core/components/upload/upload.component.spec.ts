@@ -7,6 +7,7 @@ import {
 import { RouterTestingModule } from '@angular/router/testing';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
+import 'rxjs/add/observable/throw';
 
 import { UploadComponent } from './upload.component';
 import { ParseService } from '@app/core/services/parse.service';
@@ -53,10 +54,13 @@ describe('UploadComponent', () => {
         spyOn(component, 'onParse').and.callThrough();
 
         const parseButton = fixture.nativeElement.querySelector('.file-submit');
+        const fileText = fixture.nativeElement.querySelector('.file-text');
         expect(parseButton.disabled).toBe(true);
-        component.file = new File([''], 'test.txt');
+        const filename = 'test.txt';
+        component.file = new File([''], filename);
         fixture.detectChanges();
         expect(parseButton.disabled).toBe(false);
+        expect(fileText.textContent).toContain(filename);
         parseButton.click();
         expect(component.onParse).toHaveBeenCalledTimes(1);
         expect(router.navigateByUrl).toHaveBeenCalledWith('stats');
@@ -64,5 +68,31 @@ describe('UploadComponent', () => {
     )
   );
 
-  // TODO: Parse error
+  it(
+    'should display error',
+    inject(
+      [ParseService, Router],
+      (parseService: ParseService, router: Router) => {
+        spyOn(parseService, 'parseFile').and.returnValue(
+          Observable.throw('valami')
+        );
+        spyOn(router, 'navigateByUrl').and.callFake(() => {});
+        spyOn(component, 'onParse').and.callThrough();
+
+        const parseButton = fixture.nativeElement.querySelector('.file-submit');
+        const fileText = fixture.nativeElement.querySelector('.file-text');
+        expect(parseButton.disabled).toBe(true);
+        const filename = 'test.txt';
+        component.file = new File([''], filename);
+        fixture.detectChanges();
+        expect(parseButton.disabled).toBe(false);
+        expect(fileText.textContent).toContain(filename);
+        parseButton.click();
+        fixture.detectChanges();
+        expect(component.onParse).toHaveBeenCalledTimes(1);
+        expect(router.navigateByUrl).toHaveBeenCalledTimes(0);
+        expect(fileText.textContent).toContain('Error');
+      }
+    )
+  );
 });

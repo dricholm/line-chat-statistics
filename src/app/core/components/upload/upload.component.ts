@@ -10,10 +10,12 @@ import { ParseService } from '@app/core/services/parse.service';
 })
 export class UploadComponent {
   file: File;
+  error: string;
 
   constructor(private parseService: ParseService, private router: Router) {}
 
   onChange($event): void {
+    this.error = null;
     this.file = $event.target.files[0];
   }
 
@@ -23,8 +25,7 @@ export class UploadComponent {
         this.router.navigateByUrl('stats');
       },
       error => {
-        // TODO: Display error message
-        console.log('Error during parsing', error);
+        this.error = 'Error during parsing';
       }
     );
   }

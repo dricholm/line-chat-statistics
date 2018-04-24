@@ -38,7 +38,7 @@ describe('ParseService', () => {
               ]);
             },
             error => {
-              expect(true).toBe(false, 'Error was thrown');
+              fail('Error was thrown');
             }
           );
       }
@@ -53,7 +53,7 @@ describe('ParseService', () => {
 
         service.parseFile(new File(['test'], 'test.txt')).subscribe(
           () => {
-            expect(true).toBe(false, 'No error was thrown');
+            fail('No error was thrown');
           },
           error => {
             expect(db.addMessages).toHaveBeenCalledTimes(0);
