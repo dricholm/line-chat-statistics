@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { PageScrollConfig } from 'ngx-page-scroll';
 
 @Component({
@@ -7,6 +8,8 @@ import { PageScrollConfig } from 'ngx-page-scroll';
   templateUrl: './app.component.html',
 })
 export class AppComponent implements OnInit {
+  constructor(public router: Router) {}
+
   ngOnInit(): void {
     this.setupPageScroll();
   }

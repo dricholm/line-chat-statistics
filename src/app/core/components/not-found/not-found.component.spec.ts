@@ -1,7 +1,6 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
 
 import { NotFoundComponent } from './not-found.component';
-import { HeaderComponent } from '@app/core/components/header/header.component';
 import { SectionComponent } from '@app/core/components/section/section.component';
 
 describe('NotFoundComponent', () => {
@@ -10,7 +9,7 @@ describe('NotFoundComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [HeaderComponent, NotFoundComponent, SectionComponent],
+      declarations: [NotFoundComponent, SectionComponent],
     }).compileComponents();
   }));
 
