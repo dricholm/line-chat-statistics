@@ -11,8 +11,8 @@
           Browse
         </button>
       </div>
-      <p class="align-self-center file-text mb-3 mb-lg-0" [ngClass]="{'text-danger': error}">
-        {{ error || file?.name || 'Select a chat log file' }}
+      <p class="align-self-center file-text mb-3 mb-lg-0" [ngClass]="{'text-danger': error}" [@slide]="text" *ngFor="let text of [text]">
+        {{ text }}
       </p>
       <button class="file-submit btn btn-primary btn-lg btn-block px-5" type="button" [disabled]="!file" (click)="onParse()">
         Parse

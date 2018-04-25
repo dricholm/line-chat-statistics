@@ -5,6 +5,7 @@ import {
   inject,
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { Observable } from 'rxjs/Observable';
 import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
@@ -21,7 +22,7 @@ describe('UploadComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [UploadComponent],
-      imports: [RouterTestingModule],
+      imports: [NoopAnimationsModule, RouterTestingModule],
       providers: [ParseService, DatabaseService],
     }).compileComponents();
   }));
@@ -54,13 +55,14 @@ describe('UploadComponent', () => {
         spyOn(component, 'onParse').and.callThrough();
 
         const parseButton = fixture.nativeElement.querySelector('.file-submit');
-        const fileText = fixture.nativeElement.querySelector('.file-text');
         expect(parseButton.disabled).toBe(true);
         const filename = 'test.txt';
-        component.file = new File([''], filename);
+        component.onChange({ target: { files: [new File([''], filename)] } });
         fixture.detectChanges();
         expect(parseButton.disabled).toBe(false);
-        expect(fileText.textContent).toContain(filename);
+        expect(
+          fixture.nativeElement.querySelector('.file-text').textContent
+        ).toContain(filename);
         parseButton.click();
         expect(component.onParse).toHaveBeenCalledTimes(1);
         expect(router.navigateByUrl).toHaveBeenCalledWith('stats');
@@ -74,24 +76,30 @@ describe('UploadComponent', () => {
       [ParseService, Router],
       (parseService: ParseService, router: Router) => {
         spyOn(parseService, 'parseFile').and.returnValue(
-          Observable.throw('valami')
+          Observable.throw('Error')
         );
         spyOn(router, 'navigateByUrl').and.callFake(() => {});
         spyOn(component, 'onParse').and.callThrough();
 
         const parseButton = fixture.nativeElement.querySelector('.file-submit');
-        const fileText = fixture.nativeElement.querySelector('.file-text');
         expect(parseButton.disabled).toBe(true);
         const filename = 'test.txt';
-        component.file = new File([''], filename);
+        component.onChange({
+          target: { files: [new File([''], filename)] },
+        });
         fixture.detectChanges();
         expect(parseButton.disabled).toBe(false);
-        expect(fileText.textContent).toContain(filename);
+        expect(
+          fixture.nativeElement.querySelector('.file-text').textContent
+        ).toContain(filename);
         parseButton.click();
         fixture.detectChanges();
         expect(component.onParse).toHaveBeenCalledTimes(1);
         expect(router.navigateByUrl).toHaveBeenCalledTimes(0);
-        expect(fileText.textContent).toContain('Error');
+        expect(
+          fixture.nativeElement.querySelector('.file-text').textContent
+        ).toContain('Error');
+        expect(component.file).toBeNull();
       }
     )
   );
