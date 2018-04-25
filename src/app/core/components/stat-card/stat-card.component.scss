@@ -1,0 +1,16 @@
+@import '~styles/variables';
+
+.stat-display {
+  color: $secondary;
+  font-family: Anton, Ubuntu, Helvetica, Arial, sans-serif;
+  font-size: 3rem;
+  line-height: 0.9;
+  margin-bottom: 0;
+  text-align: right;
+}
+
+.stat-unit {
+  color: $info;
+  margin-bottom: 0;
+  text-align: right;
+}

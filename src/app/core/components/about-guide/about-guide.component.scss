@@ -1,8 +1,7 @@
 @import '~styles/variables';
 
 .btn-link {
-  color: $info;
-  font-weight: $font-weight-bold;
+  color: lighten($info, 15%);
 
   &:hover,
   &.active {
@@ -11,10 +10,6 @@
   }
 }
 
-.content-box {
-  background: $white;
-  border: 1px solid $grey;
-  border-radius: $border-radius;
+.card-body {
   overflow: hidden;
-  padding: 1.25rem;
 }

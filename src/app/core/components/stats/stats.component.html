@@ -1,3 +1,8 @@
 <lcs-section header="Stats">
-  <p>Total message count: {{ db.getMessageCount() }}</p>
+  <div class="row">
+    <div class="col-lg-6 mb-3 mb-lg-0">
+      <lcs-stat-card header="Total message count" [data]="db.getMessageCount()" subtitle="messages">
+      </lcs-stat-card>
+    </div>
+  </div>
 </lcs-section>
