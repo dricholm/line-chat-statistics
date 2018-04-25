@@ -13,6 +13,7 @@ import { SectionComponent } from '@app/core/components/section/section.component
 import { ParseService } from './services/parse.service';
 import { DatabaseService } from './services/database.service';
 import { StatsComponent } from './components/stats/stats.component';
+import { AboutGuideComponent } from './components/about-guide/about-guide.component';
 
 @NgModule({
   declarations: [
@@ -25,6 +26,7 @@ import { StatsComponent } from './components/stats/stats.component';
     HeaderComponent,
     SectionComponent,
     StatsComponent,
+    AboutGuideComponent,
   ],
   exports: [HeaderComponent, FooterComponent],
   imports: [CommonModule, SharedModule],

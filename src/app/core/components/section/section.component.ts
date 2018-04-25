@@ -9,5 +9,5 @@ import { fade } from '@app/shared/animations/fade.animation';
   templateUrl: './section.component.html',
 })
 export class SectionComponent {
-  @Input() title: string;
+  @Input() header: string;
 }

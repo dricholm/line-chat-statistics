@@ -10,6 +10,7 @@ import { UploadComponent } from '@app/core/components/upload/upload.component';
 import { FooterComponent } from '@app/core/components/footer/footer.component';
 import { ParseService } from '@app/core/services/parse.service';
 import { DatabaseService } from '@app/core/services/database.service';
+import { AboutGuideComponent } from '@app/core/components/about-guide/about-guide.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -24,6 +25,7 @@ describe('HomeComponent', () => {
         SectionComponent,
         UploadComponent,
         FooterComponent,
+        AboutGuideComponent,
       ],
       imports: [NoopAnimationsModule, RouterTestingModule],
       providers: [DatabaseService, ParseService],
