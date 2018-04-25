@@ -1,4 +1,5 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 
 import { NotFoundComponent } from './not-found.component';
 import { SectionComponent } from '@app/core/components/section/section.component';
@@ -10,6 +11,7 @@ describe('NotFoundComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [NotFoundComponent, SectionComponent],
+      imports: [NoopAnimationsModule],
     }).compileComponents();
   }));
 

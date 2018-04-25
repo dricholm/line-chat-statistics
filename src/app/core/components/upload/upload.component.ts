@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 
 import { ParseService } from '@app/core/services/parse.service';
+import { fade } from '@app/shared/animations/fade.animation';
 
 @Component({
   animations: [
@@ -22,6 +23,7 @@ import { ParseService } from '@app/core/services/parse.service';
         ),
       ]),
     ]),
+    fade('400ms ease-out'),
   ],
   selector: 'lcs-upload',
   styleUrls: ['./upload.component.scss'],
@@ -46,6 +48,7 @@ export class UploadComponent {
     this.parseService.parseFile(this.file).subscribe(
       () => {
         this.router.navigateByUrl('stats');
+        window.scrollTo(0, 0);
       },
       error => {
         this.text = 'Error during parsing';
