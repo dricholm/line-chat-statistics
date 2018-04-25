@@ -9,6 +9,7 @@ export class DatabaseService {
   private messages = this.db.addCollection('messages');
 
   addMessages(messages: Array<Message>) {
+    this.messages.clear();
     this.messages.insert(
       messages.map((msg: Message) => ({
         ...msg,
