@@ -13,21 +13,87 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Timespan">
-        <p class="stat-display">{{ daySpan | number }}</p>
-        <p class="stat-unit">days</p>
+      <lcs-stat-card header="Total activity">
+        <p class="stat-display">{{ activityLength | number }}</p>
+        <p class="stat-unit">messages, stickers, calls, pictures, videos</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Total activity">
-        <p class="stat-display">{{ activityLength | number }}</p>
+      <lcs-stat-card header="Timespan">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="stat-display text-left">{{ daySpan | number }}</p>
+            <p class="stat-unit text-left">days</p>
+          </div>
+          <div>
+            <p class="stat-display">{{ activityLength / daySpan | number:'1.0-2' }}</p>
+            <p class="stat-unit">activity / day</p>
+          </div>
+        </div>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="Activity ratio">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="stat-display text-left">{{ activeDays | number }}</p>
+            <p class="stat-unit text-left">active days</p>
+          </div>
+          <div>
+            <p class="stat-display text-center text-primary">{{ activeDays / daySpan * 100 | number:'1.0-1' }}%</p>
+            <p class="stat-unit text-center">ratio</p>
+          </div>
+          <div>
+            <p class="stat-display">{{ inactiveDays | number }}</p>
+            <p class="stat-unit">inactive days</p>
+          </div>
+        </div>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="Longest activity streak">
+        <p class="stat-display">{{ longestStreak.daySpan | number }}</p>
+        <p class="stat-unit">days
+          <br>{{ longestStreak.begin | date:'fullDate' }} - {{ longestStreak.end | date:'fullDate' }}</p>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="Most active day">
+        <p class="stat-display">{{ mostActive.day | date:'fullDate' }}</p>
+        <p class="stat-unit">{{ mostActive.count }} activities</p>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="Calls">
+        <div class="d-flex justify-content-between">
+          <div>
+            <p class="stat-display text-left">{{ calls.numberOfCalls | number }}</p>
+            <p class="stat-unit text-left">calls</p>
+          </div>
+          <div>
+            <p class="stat-display">{{ calls.duration / 60 / 60 | number:'1.0-1' }}</p>
+            <p class="stat-unit">hours</p>
+          </div>
+        </div>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="Longest call">
+        <p class="stat-display">{{ calls.longest / 60 / 60 | number:'1.0-1' }}</p>
+        <p class="stat-unit">hours
+          <br>{{ calls.longestDay | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
   </div>
 </lcs-section>
 
-<lcs-section header="Activity">
+<lcs-section header="By user">
   <div class="row">
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="Messages">

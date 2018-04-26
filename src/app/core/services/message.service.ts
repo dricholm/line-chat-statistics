@@ -21,23 +21,22 @@ export class MessageService {
   private _latestDate: number;
   private _daySpan: number;
 
-  private _numberOfMessages: number;
-  private _numberOfMessageDays: number;
-  private _numberOfNoMessageDays: number;
+  private _numberOfActiveDays: number;
+  private _numberOfInactiveDays: number;
 
   private _longestStreak: {
     begin: number;
     daySpan: number;
     end: number;
-  };
+  } = { begin: 0, daySpan: 0, end: 0 };
 
-  private _mostMessages: {
+  private _mostActive: {
     count: number;
     day: number;
-  };
+  } = { count: 0, day: 0 };
 
   private _urls: {
-    [domain: string]: number;
+    [domain: string]: { [author: string]: number };
   } = {};
 
   private _calls: {
@@ -45,11 +44,15 @@ export class MessageService {
     longest: number;
     longestDay: number;
     numberOfCalls: number;
-  };
+  } = { duration: 0, longest: 0, longestDay: 0, numberOfCalls: 0 };
 
   private _days: {
     [day: number]: {
-      [author: string]: number;
+      activityCount: number;
+      authors: {
+        [author: string]: number;
+      };
+      callDuration: number;
     };
   } = {};
 
@@ -157,13 +160,128 @@ export class MessageService {
 
   public get authors(): {
     [author: string]: {
-      messages: number;
-      pictures: number;
-      stickers: number;
-      videos: number;
+      readonly messages: number;
+      readonly pictures: number;
+      readonly stickers: number;
+      readonly videos: number;
     };
   } {
     return this._authors;
+  }
+
+  public get numberOfActiveDays(): number {
+    return this._numberOfActiveDays;
+  }
+
+  public get numberOfInactiveDays(): number {
+    return this._numberOfInactiveDays;
+  }
+
+  public get longestStreak(): {
+    readonly begin: number;
+    readonly daySpan: number;
+    readonly end: number;
+  } {
+    return this._longestStreak;
+  }
+
+  public get mostActive(): {
+    readonly count: number;
+    readonly day: number;
+  } {
+    return this._mostActive;
+  }
+
+  public get urls(): {
+    readonly [domain: string]: { readonly [author: string]: number };
+  } {
+    return this._urls;
+  }
+
+  public get calls(): {
+    readonly duration: number;
+    readonly longest: number;
+    readonly longestDay: number;
+    readonly numberOfCalls: number;
+  } {
+    return this._calls;
+  }
+
+  public get days(): {
+    readonly [day: number]: {
+      readonly authors: {
+        readonly [author: string]: number;
+      };
+      readonly activityCount: number;
+    };
+  } {
+    return this._days;
+  }
+
+  public get yearMonths(): {
+    readonly [yearMonth: number]: {
+      readonly [author: string]: number;
+    };
+  } {
+    return this._yearMonths;
+  }
+
+  public get months(): {
+    readonly 0: number;
+    readonly 1: number;
+    readonly 2: number;
+    readonly 3: number;
+    readonly 4: number;
+    readonly 5: number;
+    readonly 6: number;
+    readonly 7: number;
+    readonly 8: number;
+    readonly 9: number;
+    readonly 10: number;
+    readonly 11: number;
+  } {
+    return this._months;
+  }
+
+  public get weekdays(): {
+    readonly 0: number;
+    readonly 1: number;
+    readonly 2: number;
+    readonly 3: number;
+    readonly 4: number;
+    readonly 5: number;
+    readonly 6: number;
+  } {
+    return this._weekdays;
+  }
+
+  public get hours(): {
+    readonly 0: number;
+    readonly 1: number;
+    readonly 2: number;
+    readonly 3: number;
+    readonly 4: number;
+    readonly 5: number;
+    readonly 6: number;
+    readonly 7: number;
+    readonly 8: number;
+    readonly 9: number;
+    readonly 10: number;
+    readonly 11: number;
+    readonly 12: number;
+    readonly 13: number;
+    readonly 14: number;
+    readonly 15: number;
+    readonly 16: number;
+    readonly 17: number;
+    readonly 18: number;
+    readonly 19: number;
+    readonly 20: number;
+    readonly 21: number;
+    readonly 22: number;
+    readonly 23: number;
+  } {
+    return this._hours;
   }
 
   private initStats(): void {
@@ -173,9 +291,8 @@ export class MessageService {
     this._latestDate = 0;
     this._daySpan = 0;
 
-    this._numberOfMessages = 0;
-    this._numberOfMessageDays = 0;
-    this._numberOfNoMessageDays = 0;
+    this._numberOfActiveDays = 0;
+    this._numberOfInactiveDays = 0;
 
     this._longestStreak = {
       begin: 0,
@@ -183,7 +300,7 @@ export class MessageService {
       end: 0,
     };
 
-    this._mostMessages = {
+    this._mostActive = {
       count: 0,
       day: 0,
     };
@@ -262,12 +379,17 @@ export class MessageService {
     );
 
     this.messages.forEach((message: Message) => {
-      this.parseAuthorActivity(message);
+      this.parseMessageContent(message);
       this.parseDates(message);
     });
+
+    this._numberOfActiveDays = Object.keys(this._days).length;
+    this._numberOfInactiveDays = this._daySpan - Object.keys(this._days).length;
+
+    this.calculateLongestStreak();
   }
 
-  private parseAuthorActivity(message: Message): void {
+  private parseMessageContent(message: Message): void {
     if (typeof this._authors[message.author] === 'undefined') {
       this._authors[message.author] = {
         messages: 0,
@@ -294,6 +416,22 @@ export class MessageService {
         this._authors[message.author].messages += 1;
         break;
     }
+
+    const urlMatch = message.text.match(
+      /https?:\/\/(?:www\.)?([-0-9a-zA-Z._\+~]+)/g
+    );
+    if (urlMatch) {
+      urlMatch.forEach(url => {
+        const domain = url.match(/https?:\/\/(?:www\.)?(.*)/);
+        if (typeof this._urls[domain[1]] === 'undefined') {
+          this._urls[domain[1]] = {};
+        }
+        if (typeof this._urls[domain[1]][message.author] === 'undefined') {
+          this._urls[domain[1]][message.author] = 0;
+        }
+        this._urls[domain[1]][message.author] += 1;
+      });
+    }
   }
 
   private parseDates(message: Message): void {
@@ -301,7 +439,7 @@ export class MessageService {
     const month = new Date(day).setDate(1);
 
     if (typeof this._days[day] === 'undefined') {
-      this._days[day] = {};
+      this._days[day] = { authors: {}, activityCount: 0, callDuration: 0 };
     }
     if (typeof this._days[day][message.author] === 'undefined') {
       this._days[day][message.author] = 0;
@@ -314,11 +452,74 @@ export class MessageService {
       this._yearMonths[month][message.author] = 0;
     }
 
-    this._days[day][message.author] += 1;
+    this._days[day].authors[message.author] += 1;
+    this._days[day].activityCount += 1;
     this._yearMonths[month][message.author] += 1;
 
     this._months[message.date.getMonth()] += 1;
     this._weekdays[message.date.getDay()] += 1;
     this._hours[message.date.getHours()] += 1;
+
+    if (this._days[day].activityCount > this._mostActive.count) {
+      this._mostActive.count = this._days[day].activityCount;
+      this._mostActive.day = day;
+    }
+    this._days[day][`messages_${message.author}`] += 1;
+
+    const callMatch = message.text.match(
+      /^通話時間 (?:(\d{1,2}):)?(\d{1,2}):(\d{2})$/
+    );
+    if (callMatch) {
+      const hour = callMatch[1] ? parseInt(callMatch[1], 10) * 60 * 60 : 0;
+      const min = callMatch[2] ? parseInt(callMatch[2], 10) * 60 : 0;
+      const sec = parseInt(callMatch[3], 10);
+      this._days[day].callDuration = hour + min + sec;
+      this._calls.numberOfCalls += 1;
+      this._calls.duration += hour + min + sec;
+      if (hour + min + sec > this._calls.longest) {
+        this._calls.longest = hour + min + sec;
+        this._calls.longestDay = day;
+      }
+    }
+  }
+
+  private calculateLongestStreak() {
+    let longest = 0;
+    let longestBegin = 0;
+    let longestEnd = 0;
+    let streak = 0;
+    let streakBegin = 0;
+
+    Object.keys(this._days).forEach((day, index, array) => {
+      if (index === 0) {
+        longest = 1;
+        longestBegin = +day;
+        longestEnd = +day;
+        streak = 1;
+        streakBegin = +day;
+        return;
+      }
+
+      if (+day - +array[index - 1] === 86400000) {
+        streak++;
+        return;
+      }
+
+      if (streak > longest) {
+        longest = streak;
+        longestBegin = streakBegin;
+        longestEnd = +array[index - 1];
+        streak = 1;
+        streakBegin = +day;
+        return;
+      }
+
+      streak = 1;
+      streakBegin = +day;
+    });
+
+    this._longestStreak.daySpan = longest;
+    this._longestStreak.begin = new Date(longestBegin).getTime();
+    this._longestStreak.end = new Date(longestEnd).getTime();
   }
 }

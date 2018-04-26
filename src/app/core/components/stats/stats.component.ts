@@ -14,6 +14,24 @@ export class StatsComponent implements OnInit {
   latestDate: number;
   daySpan: number;
   activityLength: number;
+  activeDays: number;
+  inactiveDays: number;
+  longestStreak: {
+    begin: number;
+    daySpan: number;
+    end: number;
+  };
+  mostActive: {
+    count: number;
+    day: number;
+  };
+  calls: {
+    duration: number;
+    longest: number;
+    longestDay: number;
+    numberOfCalls: number;
+  };
+
   authors: {
     [author: string]: {
       messages: number;
@@ -30,10 +48,20 @@ export class StatsComponent implements OnInit {
   constructor(public service: MessageService) {}
 
   ngOnInit() {
+    this.initStats();
+  }
+
+  private initStats(): void {
     this.startDate = this.service.startDate;
     this.latestDate = this.service.latestDate;
     this.daySpan = this.service.daySpan;
     this.activityLength = this.service.activityLength;
+    this.activeDays = this.service.numberOfActiveDays;
+    this.inactiveDays = this.service.numberOfInactiveDays;
+    this.longestStreak = this.service.longestStreak;
+    this.mostActive = this.service.mostActive;
+    this.calls = this.service.calls;
+
     this.authors = this.service.authors;
     this.authorMessages = Object.keys(this.authors).map((author: string) => ({
       name: author,
