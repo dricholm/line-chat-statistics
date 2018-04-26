@@ -17,12 +17,16 @@ describe('StatGuard', () => {
     'should redirect to root if message count is zero',
     inject(
       [StatGuard, Router, MessageService],
-      (guard: StatGuard, router: Router, db: MessageService) => {
-        spyOn(db, 'getMessageCount').and.returnValue(0);
+      (guard: StatGuard, router: Router, service: MessageService) => {
+        const spy = spyOnProperty(
+          service,
+          'activityLength',
+          'get'
+        ).and.returnValue(0);
         spyOn(router, 'navigateByUrl');
 
         expect(guard.canActivate()).toBe(false);
-        expect(db.getMessageCount).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledTimes(1);
         expect(router.navigateByUrl).toHaveBeenCalledWith('/');
       }
     )
@@ -32,12 +36,16 @@ describe('StatGuard', () => {
     'should return true if message count is greater then zero',
     inject(
       [StatGuard, Router, MessageService],
-      (guard: StatGuard, router: Router, db: MessageService) => {
-        spyOn(db, 'getMessageCount').and.returnValue(1);
+      (guard: StatGuard, router: Router, service: MessageService) => {
+        const spy = spyOnProperty(
+          service,
+          'activityLength',
+          'get'
+        ).and.returnValue(1);
         spyOn(router, 'navigateByUrl');
 
         expect(guard.canActivate()).toBe(true);
-        expect(db.getMessageCount).toHaveBeenCalledTimes(1);
+        expect(spy).toHaveBeenCalledTimes(1);
         expect(router.navigateByUrl).toHaveBeenCalledTimes(0);
       }
     )

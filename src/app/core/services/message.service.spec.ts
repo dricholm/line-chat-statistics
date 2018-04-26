@@ -23,16 +23,118 @@ describe('MessageService', () => {
           new File(['2018.04.24(Mon)\n16:32\tAuthor\tMessage'], 'test.txt')
         )
         .subscribe(
+          () => {},
+          error => {
+            fail('Error was thrown');
+          },
           () => {
-            expect(service.getMessageCount()).toBe(1);
+            expect(service.activityLength).toBe(1);
+            expect(service.authors).toEqual({
+              Author: {
+                messages: 1,
+                pictures: 0,
+                stickers: 0,
+                videos: 0,
+              },
+            });
             expect(service.get(0)).toEqual({
               author: 'Author',
               date: new Date('2018.04.24 16:32:00'),
               text: 'Message',
             });
-          },
+          }
+        );
+    })
+  ));
+
+  it('should parse pictures', async(
+    inject([MessageService], (service: MessageService) => {
+      service
+        .parseFile(
+          new File(['2018.04.24(Mon)\n16:32\tAuthor\t[写真]'], 'test.txt')
+        )
+        .subscribe(
+          () => {},
           error => {
             fail('Error was thrown');
+          },
+          () => {
+            expect(service.activityLength).toBe(1);
+            expect(service.authors).toEqual({
+              Author: {
+                messages: 0,
+                pictures: 1,
+                stickers: 0,
+                videos: 0,
+              },
+            });
+            expect(service.get(0)).toEqual({
+              author: 'Author',
+              date: new Date('2018.04.24 16:32:00'),
+              text: '[写真]',
+            });
+          }
+        );
+    })
+  ));
+
+  it('should parse stickers', async(
+    inject([MessageService], (service: MessageService) => {
+      service
+        .parseFile(
+          new File(['2018.04.24(Mon)\n16:32\tAuthor\t[スタンプ]'], 'test.txt')
+        )
+        .subscribe(
+          () => {},
+          error => {
+            fail('Error was thrown');
+          },
+          () => {
+            expect(service.activityLength).toBe(1);
+            expect(service.authors).toEqual({
+              Author: {
+                messages: 0,
+                pictures: 0,
+                stickers: 1,
+                videos: 0,
+              },
+            });
+            expect(service.get(0)).toEqual({
+              author: 'Author',
+              date: new Date('2018.04.24 16:32:00'),
+              text: '[スタンプ]',
+            });
+          }
+        );
+    })
+  ));
+
+  it('should parse videos', async(
+    inject([MessageService], (service: MessageService) => {
+      service
+        .parseFile(
+          new File(['2018.04.24(Mon)\n16:32\tAuthor\t[動画]'], 'test.txt')
+        )
+        .subscribe(
+          () => {},
+          error => {
+            fail('Error was thrown');
+          },
+          () => {
+            expect(service.activityLength).toBe(1);
+            expect(service.authors).toEqual({
+              Author: {
+                messages: 0,
+                pictures: 0,
+                stickers: 0,
+                videos: 1,
+              },
+            });
+            expect(service.get(0)).toEqual({
+              author: 'Author',
+              date: new Date('2018.04.24 16:32:00'),
+              text: '[動画]',
+            });
           }
         );
     })
@@ -45,7 +147,7 @@ describe('MessageService', () => {
           fail('No error was thrown');
         },
         error => {
-          expect(service.getMessageCount()).toBe(0);
+          expect(service.activityLength).toBe(0);
         }
       );
     })

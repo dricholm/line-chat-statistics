@@ -5,6 +5,7 @@ import {
   inject,
 } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { StatsComponent } from './stats.component';
 import { SectionComponent } from '@app/core/components/section/section.component';
@@ -18,7 +19,7 @@ describe('StatsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [StatsComponent, SectionComponent, StatCardComponent],
-      imports: [NoopAnimationsModule],
+      imports: [NoopAnimationsModule, NgxChartsModule],
       providers: [MessageService],
     }).compileComponents();
   }));
@@ -36,13 +37,13 @@ describe('StatsComponent', () => {
   it(
     'should display start date',
     inject([MessageService], (service: MessageService) => {
-      spyOn(service, 'getStartDate').and.returnValue(
+      const spy = spyOnProperty(service, 'startDate', 'get').and.returnValue(
         new Date('2015.03.20').getTime()
       );
 
       fixture.detectChanges();
 
-      expect(service.getStartDate).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalled();
       expect(
         fixture.nativeElement.querySelector(
           'lcs-stat-card[header="First message"'
@@ -54,13 +55,13 @@ describe('StatsComponent', () => {
   it(
     'should display latest date',
     inject([MessageService], (service: MessageService) => {
-      spyOn(service, 'getLatestDate').and.returnValue(
+      const spy = spyOnProperty(service, 'latestDate', 'get').and.returnValue(
         new Date('2018.04.26').getTime()
       );
 
       fixture.detectChanges();
 
-      expect(service.getLatestDate).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalled();
       expect(
         fixture.nativeElement.querySelector(
           'lcs-stat-card[header="Latest message"'
@@ -72,11 +73,11 @@ describe('StatsComponent', () => {
   it(
     'should display day span',
     inject([MessageService], (service: MessageService) => {
-      spyOn(service, 'getDaySpan').and.returnValue(20);
+      const spy = spyOnProperty(service, 'daySpan', 'get').and.returnValue(20);
 
       fixture.detectChanges();
 
-      expect(service.getDaySpan).toHaveBeenCalled();
+      expect(spy).toHaveBeenCalled();
       expect(
         fixture.nativeElement.querySelector('lcs-stat-card[header="Timespan"')
           .textContent

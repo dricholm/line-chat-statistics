@@ -8,7 +8,7 @@ export class StatGuard implements CanActivate {
   constructor(private service: MessageService, private router: Router) {}
 
   canActivate(): boolean {
-    if (this.service.getMessageCount() === 0) {
+    if (this.service.activityLength === 0) {
       this.router.navigateByUrl('/');
       return false;
     }

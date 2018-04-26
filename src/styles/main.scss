@@ -44,3 +44,35 @@ body {
   margin-bottom: 0;
   text-align: right;
 }
+
+.advanced-pie-chart {
+  div {
+    height: auto;
+    width: auto;
+  }
+
+  & > div {
+    display: flex;
+  }
+
+  .advanced-pie {
+    display: block;
+    float: none;
+  }
+
+  .advanced-pie-legend-wrapper {
+    display: block;
+    text-align: right;
+
+    .advanced-pie-legend {
+      .total-label {
+        @extend .stat-unit;
+        font-size: 1rem;
+      }
+    }
+  }
+}
+
+.total-value {
+  @extend .stat-display;
+}
