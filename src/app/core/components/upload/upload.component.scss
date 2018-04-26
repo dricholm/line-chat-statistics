@@ -4,13 +4,13 @@
   background-color: $secondary;
   display: flex;
 
-  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+  @media (max-width: map-get($grid-breakpoints, 'md')) {
     min-height: 100vh;
   }
 }
 
 .file-container {
-  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+  @media (max-width: map-get($grid-breakpoints, 'md')) {
     display: flex;
     flex-direction: column;
     height: 100%;
@@ -27,7 +27,7 @@
   grid-template-columns: 100%;
   grid-template-rows: 100% 100% 100%;
 
-  @media (min-width: map-get($grid-breakpoints, 'lg')) {
+  @media (min-width: map-get($grid-breakpoints, 'md')) {
     grid-template-areas: 'upload text parse';
     grid-template-columns: auto 1fr auto;
     grid-template-rows: 100%;
@@ -61,7 +61,7 @@
   text-overflow: ellipsis;
   white-space: nowrap;
 
-  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+  @media (max-width: map-get($grid-breakpoints, 'md')) {
     text-align: center;
   }
 }

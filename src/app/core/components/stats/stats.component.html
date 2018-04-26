@@ -1,25 +1,25 @@
 <lcs-section header="General">
   <div class="row">
-    <div class="col-lg-6 mb-3">
+    <div class="col-md-6 mb-3">
       <lcs-stat-card header="First message">
         <p class="stat-display">{{ startDate | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
 
-    <div class="col-lg-6 mb-3">
+    <div class="col-md-6 mb-3">
       <lcs-stat-card header="Latest message">
         <p class="stat-display">{{ latestDate | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
 
-    <div class="col-lg-6 mb-3">
+    <div class="col-md-6 mb-3">
       <lcs-stat-card header="Timespan">
         <p class="stat-display">{{ daySpan | number }}</p>
         <p class="stat-unit">days</p>
       </lcs-stat-card>
     </div>
 
-    <div class="col-lg-6 mb-3">
+    <div class="col-md-6 mb-3">
       <lcs-stat-card header="Total activity">
         <p class="stat-display">{{ activityLength | number }}</p>
       </lcs-stat-card>
@@ -29,7 +29,7 @@
 
 <lcs-section header="Activity">
   <div class="row">
-    <div class="col-lg-6 mb-3">
+    <div class="col-md-6 mb-3">
       <lcs-stat-card header="Messages">
         <div>
           <ngx-charts-advanced-pie-chart class="advanced-pie-chart" label="messages" [results]="authorMessages" [scheme]="colors">
@@ -38,7 +38,7 @@
       </lcs-stat-card>
     </div>
 
-    <div class="col-lg-6 mb-3">
+    <div class="col-md-6 mb-3">
       <lcs-stat-card header="Stickers">
         <div>
           <ngx-charts-advanced-pie-chart class="advanced-pie-chart" label="stickers" [results]="authorStickers" [scheme]="colors">
@@ -47,7 +47,7 @@
       </lcs-stat-card>
     </div>
 
-    <div class="col-lg-6 mb-3">
+    <div class="col-md-6 mb-3">
       <lcs-stat-card header="Pictures">
         <div>
           <ngx-charts-advanced-pie-chart class="advanced-pie-chart" label="pictures" [results]="authorPictures" [scheme]="colors">
@@ -56,7 +56,7 @@
       </lcs-stat-card>
     </div>
 
-    <div class="col-lg-6 mb-3">
+    <div class="col-md-6 mb-3">
       <lcs-stat-card header="Videos">
         <div>
           <ngx-charts-advanced-pie-chart class="advanced-pie-chart" label="videos" [results]="authorVideos" [scheme]="colors">

@@ -21,7 +21,7 @@
     transform: translateX(0);
   }
 
-  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+  @media (max-width: map-get($grid-breakpoints, 'md')) {
     align-items: normal;
     flex-direction: column;
     height: 100vh;
@@ -44,7 +44,7 @@
   width: 100vw;
   z-index: 1;
 
-  @media (min-width: map-get($grid-breakpoints, 'lg')) {
+  @media (min-width: map-get($grid-breakpoints, 'md')) {
     display: none;
   }
 }

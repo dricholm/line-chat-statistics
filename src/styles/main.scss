@@ -25,7 +25,7 @@ body {
 }
 
 .mobile-block {
-  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+  @media (max-width: map-get($grid-breakpoints, 'md')) {
     display: block;
     width: 100%;
   }

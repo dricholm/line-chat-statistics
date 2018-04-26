@@ -1,8 +1,8 @@
-<button class="nav-button p-4 text-info d-block d-lg-none" type="button" (click)="toggleNav()">
+<button class="nav-button p-4 text-info d-block d-md-none" type="button" (click)="toggleNav()">
   Menu
 </button>
-<nav class="navbar navbar-expand-lg navbar-dark p-4 p-lg-2" [ngClass]="{ 'show': isShown }">
-  <button class="nav-button text-info d-block d-lg-none text-left" type="button" (click)="toggleNav()">
+<nav class="navbar navbar-expand-md navbar-dark p-4 p-md-2" [ngClass]="{ 'show': isShown }">
+  <button class="nav-button text-info d-block d-md-none text-left" type="button" (click)="toggleNav()">
     Close
   </button>
   <ul class="navbar-nav">

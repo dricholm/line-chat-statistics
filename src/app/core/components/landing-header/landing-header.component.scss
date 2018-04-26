@@ -4,7 +4,7 @@
   background-color: $secondary;
   display: block;
 
-  @media (max-width: map-get($grid-breakpoints, 'lg')) {
+  @media (max-width: map-get($grid-breakpoints, 'md')) {
     min-height: 100vh;
   }
 }
