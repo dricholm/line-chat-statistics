@@ -1,14 +1,14 @@
 import { Injectable } from '@angular/core';
 import { CanActivate, Router } from '@angular/router';
 
-import { DatabaseService } from '@app/core/services/database.service';
+import { MessageService } from '@app/core/services/message.service';
 
 @Injectable()
 export class StatGuard implements CanActivate {
-  constructor(private db: DatabaseService, private router: Router) {}
+  constructor(private service: MessageService, private router: Router) {}
 
   canActivate(): boolean {
-    if (this.db.getMessageCount() === 0) {
+    if (this.service.getMessageCount() === 0) {
       this.router.navigateByUrl('/');
       return false;
     }

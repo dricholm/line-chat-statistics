@@ -8,8 +8,7 @@ import { NavComponent } from '@app/core/components/nav/nav.component';
 import { SectionComponent } from '@app/core/components/section/section.component';
 import { UploadComponent } from '@app/core/components/upload/upload.component';
 import { FooterComponent } from '@app/core/components/footer/footer.component';
-import { ParseService } from '@app/core/services/parse.service';
-import { DatabaseService } from '@app/core/services/database.service';
+import { MessageService } from '@app/core/services/message.service';
 import { AboutGuideComponent } from '@app/core/components/about-guide/about-guide.component';
 
 describe('HomeComponent', () => {
@@ -28,7 +27,7 @@ describe('HomeComponent', () => {
         AboutGuideComponent,
       ],
       imports: [NoopAnimationsModule, RouterTestingModule],
-      providers: [DatabaseService, ParseService],
+      providers: [MessageService],
     }).compileComponents();
   }));
 

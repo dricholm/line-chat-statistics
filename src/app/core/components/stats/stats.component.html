@@ -1,7 +1,25 @@
-<lcs-section header="Stats">
+<lcs-section header="General">
   <div class="row">
-    <div class="col-lg-6 mb-3 mb-lg-0">
-      <lcs-stat-card header="Total message count" [data]="db.getMessageCount()" subtitle="messages">
+    <div class="col-lg-6 mb-3">
+      <lcs-stat-card header="First message">
+        <p class="stat-display">{{ startDate | date:'fullDate' }}</p>
+      </lcs-stat-card>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <lcs-stat-card header="Latest message">
+        <p class="stat-display">{{ latestDate | date:'fullDate' }}</p>
+      </lcs-stat-card>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <lcs-stat-card header="Timespan">
+        <p class="stat-display">{{ daySpan | number }}</p>
+        <p class="stat-unit">days</p>
+      </lcs-stat-card>
+    </div>
+    <div class="col-lg-6 mb-3">
+      <lcs-stat-card header="Total messages">
+        <p class="stat-display">{{ messageCount | number }}</p>
+        <p class="stat-unit">messages</p>
       </lcs-stat-card>
     </div>
   </div>

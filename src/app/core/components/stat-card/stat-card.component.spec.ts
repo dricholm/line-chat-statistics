@@ -22,19 +22,11 @@ describe('StatCardComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it('should display inputs', () => {
+  it('should display header', () => {
     component.header = 'Header text';
-    component.data = 'Data';
-    component.subtitle = 'Subtitle';
     fixture.detectChanges();
     expect(
       fixture.nativeElement.querySelector('.card-header').textContent
     ).toContain(component.header);
-    expect(
-      fixture.nativeElement.querySelector('.stat-display').textContent
-    ).toContain(component.data);
-    expect(
-      fixture.nativeElement.querySelector('.stat-unit').textContent
-    ).toContain(component.subtitle);
   });
 });

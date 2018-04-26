@@ -11,8 +11,7 @@ import 'rxjs/add/observable/of';
 import 'rxjs/add/observable/throw';
 
 import { UploadComponent } from './upload.component';
-import { ParseService } from '@app/core/services/parse.service';
-import { DatabaseService } from '@app/core/services/database.service';
+import { MessageService } from '@app/core/services/message.service';
 import { Router } from '@angular/router';
 
 describe('UploadComponent', () => {
@@ -23,7 +22,7 @@ describe('UploadComponent', () => {
     TestBed.configureTestingModule({
       declarations: [UploadComponent],
       imports: [NoopAnimationsModule, RouterTestingModule],
-      providers: [ParseService, DatabaseService],
+      providers: [MessageService],
     }).compileComponents();
   }));
 
@@ -38,17 +37,30 @@ describe('UploadComponent', () => {
   });
 
   it('should change file', () => {
-    const file: File = new File([''], 'test.txt');
+    const filename = 'test.txt';
+    const file: File = new File([''], filename);
+
     component.onChange({ target: { files: [file] } });
     expect(component.file).toEqual(file);
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement.querySelector('.file-text').textContent
+    ).toContain(filename);
+
+    component.onChange({ target: { files: [] } });
+    expect(component.file).toBeUndefined();
+    fixture.detectChanges();
+    expect(
+      fixture.nativeElement.querySelector('.file-text').textContent
+    ).toContain('Select a chat log file');
   });
 
   it(
     'should parse file',
     inject(
-      [ParseService, Router],
-      (parseService: ParseService, router: Router) => {
-        spyOn(parseService, 'parseFile').and.returnValue(
+      [MessageService, Router],
+      (messageService: MessageService, router: Router) => {
+        spyOn(messageService, 'parseFile').and.returnValue(
           Observable.of('valami')
         );
         spyOn(router, 'navigateByUrl').and.callFake(() => {});
@@ -73,9 +85,9 @@ describe('UploadComponent', () => {
   it(
     'should display error',
     inject(
-      [ParseService, Router],
-      (parseService: ParseService, router: Router) => {
-        spyOn(parseService, 'parseFile').and.returnValue(
+      [MessageService, Router],
+      (messageService: MessageService, router: Router) => {
+        spyOn(messageService, 'parseFile').and.returnValue(
           Observable.throw('Error')
         );
         spyOn(router, 'navigateByUrl').and.callFake(() => {});

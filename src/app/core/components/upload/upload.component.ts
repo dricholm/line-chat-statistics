@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
 
-import { ParseService } from '@app/core/services/parse.service';
+import { MessageService } from '@app/core/services/message.service';
 import { fade } from '@app/shared/animations/fade.animation';
 
 @Component({
@@ -34,7 +34,7 @@ export class UploadComponent {
   text = 'Select a chat log file';
   error: boolean;
 
-  constructor(private parseService: ParseService, private router: Router) {}
+  constructor(private messageService: MessageService, private router: Router) {}
 
   onChange($event): void {
     this.error = false;
@@ -45,15 +45,19 @@ export class UploadComponent {
   }
 
   onParse(): void {
-    this.parseService.parseFile(this.file).subscribe(
+    this.text = 'Checking file, please wait';
+    this.messageService.parseFile(this.file).subscribe(
       () => {
-        this.router.navigateByUrl('stats');
-        window.scrollTo(0, 0);
+        this.text = 'Parsing file, please wait';
       },
       error => {
         this.text = 'Error during parsing';
         this.file = null;
         this.error = true;
+      },
+      () => {
+        this.router.navigateByUrl('stats');
+        window.scrollTo(0, 0);
       }
     );
   }

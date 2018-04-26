@@ -10,8 +10,7 @@ import { LandingHeaderComponent } from '@app/core/components/landing-header/land
 import { NotFoundComponent } from '@app/core/components/not-found/not-found.component';
 import { HeaderComponent } from '@app/core/components/header/header.component';
 import { SectionComponent } from '@app/core/components/section/section.component';
-import { ParseService } from './services/parse.service';
-import { DatabaseService } from './services/database.service';
+import { MessageService } from './services/message.service';
 import { StatsComponent } from './components/stats/stats.component';
 import { AboutGuideComponent } from './components/about-guide/about-guide.component';
 import { StatCardComponent } from './components/stat-card/stat-card.component';
@@ -32,6 +31,6 @@ import { StatCardComponent } from './components/stat-card/stat-card.component';
   ],
   exports: [HeaderComponent, FooterComponent],
   imports: [CommonModule, SharedModule],
-  providers: [ParseService, DatabaseService],
+  providers: [MessageService],
 })
 export class CoreModule {}
