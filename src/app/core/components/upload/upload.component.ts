@@ -46,6 +46,11 @@ export class UploadComponent {
 
   onParse(): void {
     this.text = 'Checking file, please wait';
+    if (this.file.type !== 'text/plain') {
+      this.error = true;
+      this.text = 'Please upload a text file';
+      return;
+    }
     this.messageService.parseFile(this.file).subscribe(
       () => {
         this.text = 'Parsing file, please wait';
