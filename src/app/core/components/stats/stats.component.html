@@ -141,8 +141,40 @@
     <div class="col-12 mb-3">
       <lcs-stat-card header="Most frequent links">
         <div style="height: 600px">
-          <ngx-charts-bar-horizontal-2d [results]="authorUrls" [legend]="true" legendTitle="Names" [xAxis]="true" [showXAxisLabel]="true" xAxisLabel="# of occurrences" [yAxis]="true" [scheme]="colors">
+          <ngx-charts-bar-horizontal-2d [results]="authorUrls" [legend]="true" legendTitle="Names" [xAxis]="true" [showXAxisLabel]="true"
+            xAxisLabel="# of occurrences" [yAxis]="true" [scheme]="colors">
           </ngx-charts-bar-horizontal-2d>
+        </div>
+      </lcs-stat-card>
+    </div>
+  </div>
+</lcs-section>
+
+<lcs-section header="Activity by time">
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="By hour">
+        <div style="height: 600px">
+          <ngx-charts-bar-horizontal [results]="byHour" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
+          </ngx-charts-bar-horizontal>
+        </div>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="By day">
+        <div style="height: 300px">
+          <ngx-charts-bar-horizontal [results]="byWeekday" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
+          </ngx-charts-bar-horizontal>
+        </div>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="By month">
+        <div style="height: 400px">
+          <ngx-charts-bar-horizontal [results]="byMonth" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
+          </ngx-charts-bar-horizontal>
         </div>
       </lcs-stat-card>
     </div>

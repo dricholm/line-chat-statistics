@@ -2,6 +2,13 @@ import { Component, OnInit } from '@angular/core';
 
 import { MessageService } from '@app/core/services/message.service';
 
+const monthName = new Intl.DateTimeFormat(navigator.language, {
+  month: 'short',
+});
+const weekdayName = new Intl.DateTimeFormat(navigator.language, {
+  weekday: 'short',
+});
+
 @Component({
   selector: 'lcs-stats',
   templateUrl: './stats.component.html',
@@ -9,6 +16,7 @@ import { MessageService } from '@app/core/services/message.service';
 export class StatsComponent implements OnInit {
   private authorNames: Array<string>;
 
+  monoColor: { domain: Array<string> } = { domain: ['#464e66'] };
   colors: { domain: Array<string> } = {
     domain: ['#00b84f', '#464e66', '#2d3649', '#697794'],
   };
@@ -52,6 +60,10 @@ export class StatsComponent implements OnInit {
     series: Array<{ name: string; value: number }>;
   }>;
 
+  byHour: Array<{ name: string; value: number }>;
+  byWeekday: Array<{ name: string; value: number }>;
+  byMonth: Array<{ name: string; value: number }>;
+
   constructor(public service: MessageService) {}
 
   ngOnInit() {
@@ -94,6 +106,22 @@ export class StatsComponent implements OnInit {
         name,
         value: this.service.getDomain(domain)[name] || 0,
       })),
+    }));
+
+    const hours = this.service.hours;
+    this.byHour = Object.keys(hours).map((hour: string) => ({
+      name: hour,
+      value: hours[hour],
+    }));
+    const weekdays = this.service.weekdays;
+    this.byWeekday = [1, 2, 3, 4, 5, 6, 0].map((weekday: number) => ({
+      name: weekdayName.format(new Date(2018, 0, weekday)),
+      value: weekdays[weekday],
+    }));
+    const months = this.service.months;
+    this.byMonth = Object.keys(months).map((month: string) => ({
+      name: monthName.format(new Date(2018, +month, 1)),
+      value: months[month],
     }));
   }
 }
