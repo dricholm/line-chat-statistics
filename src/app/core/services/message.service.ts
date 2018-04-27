@@ -36,8 +36,10 @@ export class MessageService {
   } = { count: 0, day: 0 };
 
   private _urls: {
-    [domain: string]: { [author: string]: number };
+    [domain: string]: { byAuthor: { [author: string]: number }; total: number };
   } = {};
+  private _topDomains: Array<string> = [];
+  private _numberOfUrls: number;
 
   private _calls: {
     duration: number;
@@ -193,9 +195,29 @@ export class MessageService {
   }
 
   public get urls(): {
-    readonly [domain: string]: { readonly [author: string]: number };
+    readonly [domain: string]: {
+      readonly byAuthor: { readonly [author: string]: number };
+      readonly total: number;
+    };
   } {
     return this._urls;
+  }
+
+  public getDomain(
+    domain: string
+  ): {
+    readonly byAuthor: { readonly [author: string]: number };
+    readonly total: number;
+  } {
+    return this._urls[domain];
+  }
+
+  public get numberOfUrls(): number {
+    return this._numberOfUrls;
+  }
+
+  public get topDomains(): Array<string> {
+    return this._topDomains;
   }
 
   public get calls(): {
@@ -306,6 +328,8 @@ export class MessageService {
     };
 
     this._urls = {};
+    this._topDomains = [];
+    this._numberOfUrls = 0;
 
     this._calls = {
       duration: 0,
@@ -387,6 +411,7 @@ export class MessageService {
     this._numberOfInactiveDays = this._daySpan - Object.keys(this._days).length;
 
     this.calculateLongestStreak();
+    this.calculateTopDomains();
   }
 
   private parseMessageContent(message: Message): void {
@@ -424,12 +449,14 @@ export class MessageService {
       urlMatch.forEach(url => {
         const domain = url.match(/https?:\/\/(?:www\.)?(.*)/);
         if (typeof this._urls[domain[1]] === 'undefined') {
-          this._urls[domain[1]] = {};
+          this._urls[domain[1]] = { byAuthor: {}, total: 0 };
         }
         if (typeof this._urls[domain[1]][message.author] === 'undefined') {
           this._urls[domain[1]][message.author] = 0;
         }
         this._urls[domain[1]][message.author] += 1;
+        this._urls[domain[1]].total += 1;
+        this._numberOfUrls += 1;
       });
     }
   }
@@ -521,5 +548,32 @@ export class MessageService {
     this._longestStreak.daySpan = longest;
     this._longestStreak.begin = new Date(longestBegin).getTime();
     this._longestStreak.end = new Date(longestEnd).getTime();
+  }
+
+  private calculateTopDomains(): void {
+    const topTen: Array<{ domain: string; count: number }> = Object.keys(
+      this._urls
+    ).map((domain: string) => {
+      return { domain, count: this._urls[domain].total };
+    });
+
+    topTen.sort(
+      (
+        a: { domain: string; count: number },
+        b: { domain: string; count: number }
+      ) => {
+        if (a.count < b.count) {
+          return 1;
+        }
+        if (a.count > b.count) {
+          return -1;
+        }
+        return 0;
+      }
+    );
+
+    this._topDomains = topTen
+      .slice(0, 10)
+      .map((element: { domain: string; count: number }) => element.domain);
   }
 }

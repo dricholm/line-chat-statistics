@@ -7,6 +7,8 @@ import { MessageService } from '@app/core/services/message.service';
   templateUrl: './stats.component.html',
 })
 export class StatsComponent implements OnInit {
+  private authorNames: Array<string>;
+
   colors: { domain: Array<string> } = {
     domain: ['#00b84f', '#464e66', '#2d3649', '#697794'],
   };
@@ -44,6 +46,11 @@ export class StatsComponent implements OnInit {
   authorPictures: Array<{ name: string; value: number }>;
   authorStickers: Array<{ name: string; value: number }>;
   authorVideos: Array<{ name: string; value: number }>;
+  numberOfUrls: number;
+  authorUrls: Array<{
+    name: string;
+    series: Array<{ name: string; value: number }>;
+  }>;
 
   constructor(public service: MessageService) {}
 
@@ -63,21 +70,30 @@ export class StatsComponent implements OnInit {
     this.calls = this.service.calls;
 
     this.authors = this.service.authors;
-    this.authorMessages = Object.keys(this.authors).map((author: string) => ({
+    this.authorNames = Object.keys(this.authors);
+    this.authorMessages = this.authorNames.map((author: string) => ({
       name: author,
       value: this.authors[author].messages,
     }));
-    this.authorPictures = Object.keys(this.authors).map((author: string) => ({
+    this.authorPictures = this.authorNames.map((author: string) => ({
       name: author,
       value: this.authors[author].pictures,
     }));
-    this.authorStickers = Object.keys(this.authors).map((author: string) => ({
+    this.authorStickers = this.authorNames.map((author: string) => ({
       name: author,
       value: this.authors[author].stickers,
     }));
-    this.authorVideos = Object.keys(this.authors).map((author: string) => ({
+    this.authorVideos = this.authorNames.map((author: string) => ({
       name: author,
       value: this.authors[author].videos,
+    }));
+    this.numberOfUrls = this.service.numberOfUrls;
+    this.authorUrls = this.service.topDomains.map((domain: string) => ({
+      name: domain,
+      series: this.authorNames.map((name: string) => ({
+        name,
+        value: this.service.getDomain(domain)[name] || 0,
+      })),
     }));
   }
 }

@@ -54,17 +54,16 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Longest activity streak">
-        <p class="stat-display">{{ longestStreak.daySpan | number }}</p>
-        <p class="stat-unit">days
-          <br>{{ longestStreak.begin | date:'fullDate' }} - {{ longestStreak.end | date:'fullDate' }}</p>
+      <lcs-stat-card header="Most active day">
+        <p class="stat-display">{{ mostActive.day | date:'fullDate' }}</p>
+        <p class="stat-unit">{{ mostActive.count }} activities</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Most active day">
-        <p class="stat-display">{{ mostActive.day | date:'fullDate' }}</p>
-        <p class="stat-unit">{{ mostActive.count }} activities</p>
+      <lcs-stat-card header="Links sent">
+        <p class="stat-display">{{ numberOfUrls | number }}</p>
+        <p class="stat-unit">link</p>
       </lcs-stat-card>
     </div>
 
@@ -84,6 +83,14 @@
     </div>
 
     <div class="col-md-6 mb-3">
+      <lcs-stat-card header="Longest activity streak">
+        <p class="stat-display">{{ longestStreak.daySpan | number }}</p>
+        <p class="stat-unit">days
+          <br>{{ longestStreak.begin | date:'fullDate' }} - {{ longestStreak.end | date:'fullDate' }}</p>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-md-6 mb-3">
       <lcs-stat-card header="Longest call">
         <p class="stat-display">{{ calls.longest / 60 / 60 | number:'1.0-1' }}</p>
         <p class="stat-unit">hours
@@ -93,7 +100,7 @@
   </div>
 </lcs-section>
 
-<lcs-section header="By user">
+<lcs-section header="Activity">
   <div class="row">
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="Messages">
@@ -127,6 +134,15 @@
         <div>
           <ngx-charts-advanced-pie-chart class="advanced-pie-chart" label="videos" [results]="authorVideos" [scheme]="colors">
           </ngx-charts-advanced-pie-chart>
+        </div>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-12 mb-3">
+      <lcs-stat-card header="Most frequent links">
+        <div style="height: 600px">
+          <ngx-charts-bar-horizontal-2d [results]="authorUrls" [legend]="true" legendTitle="Names" [xAxis]="true" [showXAxisLabel]="true" xAxisLabel="# of occurrences" [yAxis]="true" [scheme]="colors">
+          </ngx-charts-bar-horizontal-2d>
         </div>
       </lcs-stat-card>
     </div>
