@@ -1,20 +1,62 @@
-<lcs-section header="General">
+<lcs-section header="Chat">
   <div class="row">
+    <div class="col-12 mb-3">
+      <lcs-stat-card header="Members">
+        <div class="d-flex justify-content-center flex-wrap">
+          <p *ngFor="let name of authorNames" class="stat-display text-center mx-3">{{ name }}</p>
+        </div>
+      </lcs-stat-card>
+    </div>
+
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="First message">
-        <p class="stat-display">{{ startDate | date:'fullDate' }}</p>
+        <p class="stat-display">{{ chatStartDate | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="Latest message">
+        <p class="stat-display">{{ chatLatestDate | date:'fullDate' }}</p>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-12 mb-3">
+      <lcs-stat-card header="Interval">
+        <form [formGroup]="form" (ngSubmit)="onDateSubmit()">
+          <div class="d-flex justify-content-between flex-wrap">
+            <div class="form-group">
+              <label for="fromDate">From</label>
+              <input type="date" class="form-control form-control-lg" formControlName="from" id="fromDate" useValueAsDate>
+            </div>
+            <div class="form-group">
+              <label for="fromDate">To</label>
+              <input type="date" class="form-control form-control-lg" formControlName="to" id="toDate" useValueAsDate>
+            </div>
+          </div>
+          <button class="btn btn-primary btn-lg btn-block" type="submit">Parse</button>
+        </form>
+      </lcs-stat-card>
+    </div>
+  </div>
+</lcs-section>
+
+<lcs-section header="General">
+  <div class="row">
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="From">
+        <p class="stat-display">{{ startDate | date:'fullDate' }}</p>
+      </lcs-stat-card>
+    </div>
+
+    <div class="col-md-6 mb-3">
+      <lcs-stat-card header="To">
         <p class="stat-display">{{ latestDate | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="Total activity">
-        <p class="stat-display">{{ activityLength | number }}</p>
+        <p class="stat-display">{{ intervalActivity | number }}</p>
         <p class="stat-unit">messages, stickers, calls, pictures, videos</p>
       </lcs-stat-card>
     </div>
@@ -27,7 +69,7 @@
             <p class="stat-unit text-left">days</p>
           </div>
           <div>
-            <p class="stat-display">{{ activityLength / daySpan | number:'1.0-2' }}</p>
+            <p class="stat-display">{{ intervalActivity / daySpan | number:'1.0-2' }}</p>
             <p class="stat-unit">activity / day</p>
           </div>
         </div>
@@ -36,16 +78,16 @@
 
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="Activity ratio">
-        <div class="d-flex justify-content-between">
-          <div>
+        <div class="row">
+          <div class="col-4">
             <p class="stat-display text-left">{{ activeDays | number }}</p>
             <p class="stat-unit text-left">active days</p>
           </div>
-          <div>
-            <p class="stat-display text-center text-primary">{{ activeDays / daySpan * 100 | number:'1.0-1' }}%</p>
-            <p class="stat-unit text-center">ratio</p>
+          <div class="col-4">
+            <p class="stat-display text-center text-primary">{{ activeDays / daySpan * 100 | number:'1.0-1' }}</p>
+            <p class="stat-unit text-center">%</p>
           </div>
-          <div>
+          <div class="col-4">
             <p class="stat-display">{{ inactiveDays | number }}</p>
             <p class="stat-unit">inactive days</p>
           </div>
@@ -94,7 +136,9 @@
       <lcs-stat-card header="Longest call">
         <p class="stat-display">{{ calls.longest / 60 / 60 | number:'1.0-1' }}</p>
         <p class="stat-unit">hours
-          <br>{{ calls.longestDay | date:'fullDate' }}</p>
+          <span *ngIf="calls.longest > 0">
+            <br>{{ calls.longestDay | date:'fullDate' }}</span>
+        </p>
       </lcs-stat-card>
     </div>
   </div>
@@ -162,7 +206,7 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="By day">
+      <lcs-stat-card header="By weekday">
         <div style="height: 300px">
           <ngx-charts-bar-horizontal [results]="byWeekday" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
           </ngx-charts-bar-horizontal>

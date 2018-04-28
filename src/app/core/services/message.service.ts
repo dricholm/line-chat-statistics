@@ -19,6 +19,7 @@ export class MessageService {
 
   private _startDate: number;
   private _latestDate: number;
+  private _intervalActivity: number;
   private _daySpan: number;
 
   private _numberOfActiveDays: number;
@@ -168,12 +169,14 @@ export class MessageService {
 
       reader.onload = (progress: ProgressEvent) => {
         this.messages = LineChatParser.parse(reader.result);
-        this.initStats();
         if (this.messages.length === 0) {
           return observer.error(new Error('No messages found'));
         }
         observer.next();
-        this.parseMessages();
+        this.parseMessages(
+          this.messages[0].date,
+          this.messages[this.messages.length - 1].date
+        );
         observer.complete();
       };
 
@@ -200,6 +203,10 @@ export class MessageService {
 
   public get latestDate(): number {
     return this._latestDate;
+  }
+
+  public get intervalActivity(): number {
+    return this._intervalActivity;
   }
 
   public get daySpan(): number {
@@ -357,6 +364,7 @@ export class MessageService {
 
     this._startDate = 0;
     this._latestDate = 0;
+    this._intervalActivity = 0;
     this._daySpan = 0;
 
     this._numberOfActiveDays = 0;
@@ -441,16 +449,19 @@ export class MessageService {
     };
   }
 
-  private parseMessages(): void {
-    this._startDate = this.messages[0].date.getTime();
-    this._latestDate = this.messages[this.messages.length - 1].date.getTime();
-    this._daySpan = Math.ceil(
-      (this._latestDate - this._startDate) / 1000 / 60 / 60 / 24
-    );
+  parseMessages(from: Date, to: Date): void {
+    this.initStats();
+    this._startDate = from.getTime();
+    this._latestDate = to.getTime();
+    this._daySpan =
+      Math.ceil((this._latestDate - this._startDate) / 1000 / 60 / 60 / 24) + 1;
 
     this.messages.forEach((message: Message) => {
-      this.parseMessageContent(message);
-      this.parseDates(message);
+      if (message.date >= from && message.date <= to) {
+        this._intervalActivity += 1;
+        this.parseMessageContent(message);
+        this.parseDates(message);
+      }
     });
 
     this._numberOfActiveDays = Object.keys(this._days).length;
@@ -590,6 +601,12 @@ export class MessageService {
       streak = 1;
       streakBegin = +day;
     });
+
+    if (streak > longest) {
+      longest = streak;
+      longestBegin = streakBegin;
+      longestEnd = this._latestDate;
+    }
 
     this._longestStreak.daySpan = longest;
     this._longestStreak.begin = new Date(longestBegin).getTime();

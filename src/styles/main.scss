@@ -9,6 +9,7 @@
 
 @import 'node_modules/bootstrap/scss/buttons';
 @import 'node_modules/bootstrap/scss/card';
+@import 'node_modules/bootstrap/scss/forms';
 @import 'node_modules/bootstrap/scss/grid';
 @import 'node_modules/bootstrap/scss/nav';
 @import 'node_modules/bootstrap/scss/navbar';
@@ -29,6 +30,11 @@ body {
     display: block;
     width: 100%;
   }
+}
+
+.form-control-lg {
+  font-family: Anton, Ubuntu, Helvetica, Arial, sans-serif;
+  font-size: 2rem;
 }
 
 .stat-display {

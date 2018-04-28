@@ -5,6 +5,7 @@ import {
   inject,
 } from '@angular/core/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { ReactiveFormsModule } from '@angular/forms';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
 import { StatsComponent } from './stats.component';
@@ -19,7 +20,7 @@ describe('StatsComponent', () => {
   beforeEach(async(() => {
     TestBed.configureTestingModule({
       declarations: [StatsComponent, SectionComponent, StatCardComponent],
-      imports: [NoopAnimationsModule, NgxChartsModule],
+      imports: [NoopAnimationsModule, ReactiveFormsModule, NgxChartsModule],
       providers: [MessageService],
     }).compileComponents();
   }));
@@ -37,13 +38,19 @@ describe('StatsComponent', () => {
   it(
     'should display start date',
     inject([MessageService], (service: MessageService) => {
-      const spy = spyOnProperty(service, 'startDate', 'get').and.returnValue(
-        new Date('2015.03.20').getTime()
-      );
+      const spy = spyOnProperty(
+        service,
+        'activityLength',
+        'get'
+      ).and.returnValue(1);
+      spyOn(service, 'get').and.callFake(() => ({
+        date: new Date('2015.03.20'),
+      }));
 
       fixture.detectChanges();
 
       expect(spy).toHaveBeenCalled();
+      expect(service.get).toHaveBeenCalledWith(0);
       expect(
         fixture.nativeElement.querySelector(
           'lcs-stat-card[header="First message"'
@@ -55,13 +62,19 @@ describe('StatsComponent', () => {
   it(
     'should display latest date',
     inject([MessageService], (service: MessageService) => {
-      const spy = spyOnProperty(service, 'latestDate', 'get').and.returnValue(
-        new Date('2018.04.26').getTime()
-      );
+      const spy = spyOnProperty(
+        service,
+        'activityLength',
+        'get'
+      ).and.returnValue(5);
+      spyOn(service, 'get').and.callFake(() => ({
+        date: new Date('2018.04.26'),
+      }));
 
       fixture.detectChanges();
 
       expect(spy).toHaveBeenCalled();
+      expect(service.get).toHaveBeenCalledWith(4);
       expect(
         fixture.nativeElement.querySelector(
           'lcs-stat-card[header="Latest message"'

@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormGroup, FormControl, Validators } from '@angular/forms';
 
 import { MessageService } from '@app/core/services/message.service';
 
@@ -14,16 +15,17 @@ const weekdayName = new Intl.DateTimeFormat(navigator.language, {
   templateUrl: './stats.component.html',
 })
 export class StatsComponent implements OnInit {
-  private authorNames: Array<string>;
-
   monoColor: { domain: Array<string> } = { domain: ['#464e66'] };
   colors: { domain: Array<string> } = {
     domain: ['#00b84f', '#464e66', '#2d3649', '#697794'],
   };
+
+  chatStartDate: number;
+  chatLatestDate: number;
   startDate: number;
   latestDate: number;
   daySpan: number;
-  activityLength: number;
+  intervalActivity: number;
   activeDays: number;
   inactiveDays: number;
   longestStreak: {
@@ -50,6 +52,7 @@ export class StatsComponent implements OnInit {
       videos: number;
     };
   };
+  authorNames: Array<string>;
   authorMessages: Array<{ name: string; value: number }>;
   authorPictures: Array<{ name: string; value: number }>;
   authorStickers: Array<{ name: string; value: number }>;
@@ -64,9 +67,34 @@ export class StatsComponent implements OnInit {
   byWeekday: Array<{ name: string; value: number }>;
   byMonth: Array<{ name: string; value: number }>;
 
+  form: FormGroup;
+
   constructor(public service: MessageService) {}
 
   ngOnInit() {
+    this.chatStartDate =
+      this.service.activityLength > 0
+        ? this.service.get(0).date.getTime()
+        : new Date().getTime();
+    this.chatLatestDate =
+      this.service.activityLength > 0
+        ? this.service.get(this.service.activityLength - 1).date.getTime()
+        : new Date().getTime();
+    this.initStats();
+    this.form = new FormGroup({
+      from: new FormControl(new Date(this.startDate), [Validators.required]),
+      to: new FormControl(new Date(this.latestDate), [Validators.required]),
+    });
+  }
+
+  onDateSubmit() {
+    if (this.form.value.from < new Date(this.chatStartDate)) {
+      this.form.controls.from.setValue(new Date(this.chatStartDate));
+    }
+    if (this.form.value.to > new Date(this.chatLatestDate)) {
+      this.form.controls.to.setValue(new Date(this.chatLatestDate));
+    }
+    this.service.parseMessages(this.form.value.from, this.form.value.to);
     this.initStats();
   }
 
@@ -74,7 +102,7 @@ export class StatsComponent implements OnInit {
     this.startDate = this.service.startDate;
     this.latestDate = this.service.latestDate;
     this.daySpan = this.service.daySpan;
-    this.activityLength = this.service.activityLength;
+    this.intervalActivity = this.service.intervalActivity;
     this.activeDays = this.service.numberOfActiveDays;
     this.inactiveDays = this.service.numberOfInactiveDays;
     this.longestStreak = this.service.longestStreak;
