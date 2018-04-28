@@ -88,12 +88,18 @@ export class StatsComponent implements OnInit {
   }
 
   onDateSubmit() {
+    if (this.form.value.from > this.form.value.to) {
+      const tempDate = this.form.value.to;
+      this.form.controls.to.setValue(this.form.value.from);
+      this.form.controls.from.setValue(tempDate);
+    }
     if (this.form.value.from < new Date(this.chatStartDate)) {
       this.form.controls.from.setValue(new Date(this.chatStartDate));
     }
     if (this.form.value.to > new Date(this.chatLatestDate)) {
       this.form.controls.to.setValue(new Date(this.chatLatestDate));
     }
+
     this.service.parseMessages(this.form.value.from, this.form.value.to);
     this.initStats();
   }

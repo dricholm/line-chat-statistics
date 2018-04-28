@@ -149,7 +149,7 @@
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="Messages">
         <div>
-          <ngx-charts-advanced-pie-chart class="advanced-pie-chart" label="messages" [results]="authorMessages" [scheme]="colors">
+          <ngx-charts-advanced-pie-chart [animations]="false" class="advanced-pie-chart" label="messages" [results]="authorMessages" [scheme]="colors">
           </ngx-charts-advanced-pie-chart>
         </div>
       </lcs-stat-card>
@@ -158,7 +158,7 @@
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="Stickers">
         <div>
-          <ngx-charts-advanced-pie-chart class="advanced-pie-chart" label="stickers" [results]="authorStickers" [scheme]="colors">
+          <ngx-charts-advanced-pie-chart [animations]="false" class="advanced-pie-chart" label="stickers" [results]="authorStickers" [scheme]="colors">
           </ngx-charts-advanced-pie-chart>
         </div>
       </lcs-stat-card>
@@ -167,7 +167,7 @@
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="Pictures">
         <div>
-          <ngx-charts-advanced-pie-chart class="advanced-pie-chart" label="pictures" [results]="authorPictures" [scheme]="colors">
+          <ngx-charts-advanced-pie-chart [animations]="false" class="advanced-pie-chart" label="pictures" [results]="authorPictures" [scheme]="colors">
           </ngx-charts-advanced-pie-chart>
         </div>
       </lcs-stat-card>
@@ -176,7 +176,7 @@
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="Videos">
         <div>
-          <ngx-charts-advanced-pie-chart class="advanced-pie-chart" label="videos" [results]="authorVideos" [scheme]="colors">
+          <ngx-charts-advanced-pie-chart [animations]="false" class="advanced-pie-chart" label="videos" [results]="authorVideos" [scheme]="colors">
           </ngx-charts-advanced-pie-chart>
         </div>
       </lcs-stat-card>
@@ -184,11 +184,12 @@
 
     <div class="col-12 mb-3">
       <lcs-stat-card header="Most frequent links">
-        <div style="height: 600px">
-          <ngx-charts-bar-horizontal-2d [results]="authorUrls" [legend]="true" legendTitle="Names" [xAxis]="true" [showXAxisLabel]="true"
+        <div style="height: 600px" *ngIf="numberOfUrls > 0">
+          <ngx-charts-bar-horizontal-2d [animations]="false" [results]="authorUrls" [legend]="true" legendTitle="Names" [xAxis]="true" [showXAxisLabel]="true"
             xAxisLabel="# of occurrences" [yAxis]="true" [scheme]="colors">
           </ngx-charts-bar-horizontal-2d>
         </div>
+        <p class="mb-0" *ngIf="numberOfUrls === 0">No links have been sent.</p>
       </lcs-stat-card>
     </div>
   </div>
@@ -199,7 +200,7 @@
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="By hour">
         <div style="height: 600px">
-          <ngx-charts-bar-horizontal [results]="byHour" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
+          <ngx-charts-bar-horizontal [animations]="false" [results]="byHour" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
           </ngx-charts-bar-horizontal>
         </div>
       </lcs-stat-card>
@@ -208,7 +209,7 @@
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="By weekday">
         <div style="height: 300px">
-          <ngx-charts-bar-horizontal [results]="byWeekday" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
+          <ngx-charts-bar-horizontal [animations]="false" [results]="byWeekday" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
           </ngx-charts-bar-horizontal>
         </div>
       </lcs-stat-card>
@@ -217,7 +218,7 @@
     <div class="col-md-6 mb-3">
       <lcs-stat-card header="By month">
         <div style="height: 400px">
-          <ngx-charts-bar-horizontal [results]="byMonth" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
+          <ngx-charts-bar-horizontal [animations]="false" [results]="byMonth" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
           </ngx-charts-bar-horizontal>
         </div>
       </lcs-stat-card>
