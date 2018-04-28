@@ -136,20 +136,22 @@ export class StatsComponent implements OnInit {
       })),
     }));
 
-    const hours = this.service.hours;
-    this.byHour = Object.keys(hours).map((hour: string) => ({
-      name: hour,
-      value: hours[hour],
-    }));
+    this.byHour = Object.entries(this.service.hours).map(
+      ([hour, value]: [string, number]) => ({
+        name: hour,
+        value,
+      })
+    );
     const weekdays = this.service.weekdays;
     this.byWeekday = [1, 2, 3, 4, 5, 6, 0].map((weekday: number) => ({
       name: weekdayName.format(new Date(2018, 0, weekday)),
       value: weekdays[weekday],
     }));
-    const months = this.service.months;
-    this.byMonth = Object.keys(months).map((month: string) => ({
-      name: monthName.format(new Date(2018, +month, 1)),
-      value: months[month],
-    }));
+    this.byMonth = Object.entries(this.service.months).map(
+      ([month, value]: [string, number]) => ({
+        name: monthName.format(new Date(2018, +month, 1)),
+        value,
+      })
+    );
   }
 }
