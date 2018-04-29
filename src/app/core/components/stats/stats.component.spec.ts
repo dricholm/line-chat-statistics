@@ -12,6 +12,7 @@ import { StatsComponent } from './stats.component';
 import { SectionComponent } from '@app/core/components/section/section.component';
 import { MessageService } from '@app/core/services/message.service';
 import { StatCardComponent } from '@app/core/components/stat-card/stat-card.component';
+import { CalendarComponent } from '@app/core/components/calendar/calendar.component';
 
 describe('StatsComponent', () => {
   let component: StatsComponent;
@@ -19,7 +20,12 @@ describe('StatsComponent', () => {
 
   beforeEach(async(() => {
     TestBed.configureTestingModule({
-      declarations: [StatsComponent, SectionComponent, StatCardComponent],
+      declarations: [
+        StatsComponent,
+        SectionComponent,
+        StatCardComponent,
+        CalendarComponent,
+      ],
       imports: [NoopAnimationsModule, ReactiveFormsModule, NgxChartsModule],
       providers: [MessageService],
     }).compileComponents();

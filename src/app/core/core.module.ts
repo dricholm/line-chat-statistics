@@ -14,6 +14,7 @@ import { MessageService } from './services/message.service';
 import { StatsComponent } from './components/stats/stats.component';
 import { AboutGuideComponent } from './components/about-guide/about-guide.component';
 import { StatCardComponent } from './components/stat-card/stat-card.component';
+import { CalendarComponent } from './components/calendar/calendar.component';
 
 @NgModule({
   declarations: [
@@ -28,6 +29,7 @@ import { StatCardComponent } from './components/stat-card/stat-card.component';
     StatsComponent,
     AboutGuideComponent,
     StatCardComponent,
+    CalendarComponent,
   ],
   exports: [HeaderComponent, FooterComponent],
   imports: [CommonModule, SharedModule],

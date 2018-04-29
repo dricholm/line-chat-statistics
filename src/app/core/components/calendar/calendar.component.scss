@@ -1,0 +1,40 @@
+@import '~styles/variables';
+
+:host {
+  position: relative;
+}
+
+.calendar-text {
+  fill: $info;
+}
+
+.day {
+  &:hover {
+    opacity: 0.5;
+  }
+}
+
+.day-hover {
+  background: rgba(0, 0, 0, 0.7);
+  border-radius: $border-radius;
+  color: $white;
+  left: 0;
+  pointer-events: none;
+  transition: 200ms ease-out top;
+  width: 287px;
+  will-change: top;
+  z-index: 100;
+
+  &:after {
+    border: 5px solid transparent;
+    border-top-color: rgba(0, 0, 0, 0.7);
+    bottom: -10px;
+    content: '';
+    height: 5px;
+    left: 50%;
+    pointer-events: none;
+    position: absolute;
+    transform: translateX(-50%);
+    width: 5px;
+  }
+}

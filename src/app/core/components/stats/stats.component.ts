@@ -67,6 +67,8 @@ export class StatsComponent implements OnInit {
   byWeekday: Array<{ name: string; value: number }>;
   byMonth: Array<{ name: string; value: number }>;
 
+  calendarData: any;
+
   form: FormGroup;
 
   constructor(public service: MessageService) {}
@@ -116,7 +118,7 @@ export class StatsComponent implements OnInit {
     this.calls = this.service.calls;
 
     this.authors = this.service.authors;
-    this.authorNames = Object.keys(this.authors);
+    this.authorNames = Object.keys(this.authors).sort();
     this.authorMessages = this.authorNames.map((author: string) => ({
       name: author,
       value: this.authors[author].messages,
@@ -159,5 +161,57 @@ export class StatsComponent implements OnInit {
         value,
       })
     );
+
+    this.getCalendarData();
+  }
+
+  getCalendarData() {
+    // today
+    const now = new Date();
+    const todaysDay = now.getDate();
+    const thisDay = new Date(now.getFullYear(), now.getMonth(), todaysDay);
+
+    // Monday
+    const thisMonday = new Date(
+      thisDay.getFullYear(),
+      thisDay.getMonth(),
+      todaysDay - thisDay.getDay() + 1
+    );
+    const thisMondayDay = thisMonday.getDate();
+    const thisMondayYear = thisMonday.getFullYear();
+    const thisMondayMonth = thisMonday.getMonth();
+
+    // 52 weeks before monday
+    this.calendarData = [];
+    const getDate = d => new Date(thisMondayYear, thisMondayMonth, d);
+    for (let week = -52; week <= 0; week++) {
+      const mondayDay = thisMondayDay + week * 7;
+      const monday = getDate(mondayDay);
+
+      // one week
+      const series = [];
+      for (let dayOfWeek = 7; dayOfWeek > 0; dayOfWeek--) {
+        const date = getDate(mondayDay - 1 + dayOfWeek);
+
+        // skip future dates
+        if (date > now) {
+          continue;
+        }
+
+        // value
+        const value = dayOfWeek < 6 ? date.getMonth() + 1 : 0;
+
+        series.push({
+          date,
+          name: weekdayName.format(date),
+          value,
+        });
+      }
+
+      this.calendarData.push({
+        name: monday.toString(),
+        series,
+      });
+    }
   }
 }

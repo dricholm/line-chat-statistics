@@ -1,30 +1,12 @@
 import { Component } from '@angular/core';
 import { Router } from '@angular/router';
-import { trigger, transition, style, animate } from '@angular/animations';
 
 import { MessageService } from '@app/core/services/message.service';
 import { fade } from '@app/shared/animations/fade.animation';
+import { slide } from '@app/shared/animations/slide.animation';
 
 @Component({
-  animations: [
-    trigger('slide', [
-      transition(':enter', [
-        style({ opacity: 0, transform: 'translateX(-1rem)' }),
-        animate(
-          '200ms 100ms ease-out',
-          style({ opacity: 1, transform: 'translateX(0)' })
-        ),
-      ]),
-      transition(':leave', [
-        style({ opacity: 1, transform: 'translateX(0)' }),
-        animate(
-          '200ms ease-in',
-          style({ opacity: 0, transform: 'translateX(4rem)' })
-        ),
-      ]),
-    ]),
-    fade('400ms ease-out'),
-  ],
+  animations: [slide(), fade('400ms ease-out')],
   selector: 'lcs-upload',
   styleUrls: ['./upload.component.scss'],
   templateUrl: './upload.component.html',

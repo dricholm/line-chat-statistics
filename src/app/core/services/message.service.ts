@@ -284,10 +284,11 @@ export class MessageService {
 
   public get days(): {
     readonly [day: number]: {
+      readonly activityCount: number;
       readonly authors: {
         readonly [author: string]: number;
       };
-      readonly activityCount: number;
+      readonly callDuration: number;
     };
   } {
     return this._days;
@@ -557,7 +558,7 @@ export class MessageService {
       const hour = callMatch[1] ? parseInt(callMatch[1], 10) * 60 * 60 : 0;
       const min = callMatch[2] ? parseInt(callMatch[2], 10) * 60 : 0;
       const sec = parseInt(callMatch[3], 10);
-      this._days[day].callDuration = hour + min + sec;
+      this._days[day].callDuration += hour + min + sec;
       this._calls.numberOfCalls += 1;
       this._calls.duration += hour + min + sec;
       if (hour + min + sec > this._calls.longest) {
