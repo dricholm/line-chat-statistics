@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable } from 'rxjs/Observable';
+import { Observable } from 'rxjs';
 import * as LineChatParser from 'line-chat-parser';
 
 import { Message } from '@app/core/interfaces/message';

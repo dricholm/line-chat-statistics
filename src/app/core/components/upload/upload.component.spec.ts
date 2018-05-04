@@ -6,9 +6,7 @@ import {
 } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
-import { Observable } from 'rxjs/Observable';
-import 'rxjs/add/observable/of';
-import 'rxjs/add/observable/throw';
+import { of, throwError } from 'rxjs';
 
 import { UploadComponent } from './upload.component';
 import { MessageService } from '@app/core/services/message.service';
@@ -41,7 +39,7 @@ describe('UploadComponent', () => {
     inject(
       [MessageService, Router],
       (service: MessageService, router: Router) => {
-        spyOn(service, 'parseFile').and.returnValue(Observable.of());
+        spyOn(service, 'parseFile').and.returnValue(of());
         spyOn(router, 'navigateByUrl').and.callFake(() => {});
         const parseButton = fixture.nativeElement.querySelector('.file-submit');
         let file: File = new File([''], 'text.txt', { type: 'image/jpeg' });
@@ -110,7 +108,7 @@ describe('UploadComponent', () => {
       [MessageService, Router],
       (messageService: MessageService, router: Router) => {
         spyOn(messageService, 'parseFile').and.returnValue(
-          Observable.of('valami')
+          of('valami')
         );
         spyOn(router, 'navigateByUrl').and.callFake(() => {});
         spyOn(component, 'onParse').and.callThrough();
@@ -141,7 +139,7 @@ describe('UploadComponent', () => {
       [MessageService, Router],
       (messageService: MessageService, router: Router) => {
         spyOn(messageService, 'parseFile').and.returnValue(
-          Observable.throw('Error')
+          throwError('Error')
         );
         spyOn(router, 'navigateByUrl').and.callFake(() => {});
         spyOn(component, 'onParse').and.callThrough();
