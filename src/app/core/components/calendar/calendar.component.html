@@ -6,13 +6,13 @@
 
 <svg [attr.height]="(weeks?.length + 1) * 21">
   <g transform="translate(0, 20)">
-    <text text-anchor="middle" x="20" y="0" class="calendar-text">Mon</text>
-    <text text-anchor="middle" x="61" y="0" class="calendar-text">Tue</text>
-    <text text-anchor="middle" x="102" y="0" class="calendar-text">Wed</text>
-    <text text-anchor="middle" x="143" y="0" class="calendar-text">Thu</text>
-    <text text-anchor="middle" x="184" y="0" class="calendar-text">Fri</text>
-    <text text-anchor="middle" x="225" y="0" class="calendar-text">Sat</text>
-    <text text-anchor="middle" x="266" y="0" class="calendar-text">Sun</text>
+    <text text-anchor="middle" x="20" y="0" class="calendar-text" i18n="@@dayMon">Mon</text>
+    <text text-anchor="middle" x="61" y="0" class="calendar-text" i18n="@@dayTue">Tue</text>
+    <text text-anchor="middle" x="102" y="0" class="calendar-text" i18n="@@dayWed">Wed</text>
+    <text text-anchor="middle" x="143" y="0" class="calendar-text" i18n="@@dayThu">Thu</text>
+    <text text-anchor="middle" x="184" y="0" class="calendar-text" i18n="@@dayFri">Fri</text>
+    <text text-anchor="middle" x="225" y="0" class="calendar-text" i18n="@@daySat">Sat</text>
+    <text text-anchor="middle" x="266" y="0" class="calendar-text" i18n="@@daySun">Sun</text>
 
     <g *ngFor="let week of weeks; let i = index" [attr.transform]="'translate(0, ' + (i * 21 + 3) + ')'">
       <rect

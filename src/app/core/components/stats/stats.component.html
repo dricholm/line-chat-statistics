@@ -1,7 +1,7 @@
 <lcs-section header="Chat">
   <div class="row">
     <div class="col-12 mb-3">
-      <lcs-stat-card header="Members">
+      <lcs-stat-card header="Members" i18n-header="@@members">
         <div class="d-flex justify-content-center flex-wrap">
           <p *ngFor="let name of authorNames" class="stat-display text-center mx-3">{{ name }}</p>
         </div>
@@ -9,79 +9,79 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="First message">
+      <lcs-stat-card header="First message" i18n-header="@@firstMessage">
         <p class="stat-display">{{ chatStartDate | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Latest message">
+      <lcs-stat-card header="Latest message" i18n-header="@@latestMessage">
         <p class="stat-display">{{ chatLatestDate | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-12 mb-3">
-      <lcs-stat-card header="Interval">
+      <lcs-stat-card header="Interval" i18n-header="@@interval">
         <form [formGroup]="form" (ngSubmit)="onDateSubmit()">
           <div class="d-flex justify-content-between flex-wrap">
             <div class="form-group">
-              <label for="fromDate">From</label>
+              <label for="fromDate" i18n="@@dateFrom">From</label>
               <input type="date" class="form-control form-control-lg" formControlName="from" id="fromDate" useValueAsDate>
             </div>
             <div class="form-group">
-              <label for="fromDate">To</label>
+              <label for="fromDate" i18n="@@dateTo">To</label>
               <input type="date" class="form-control form-control-lg" formControlName="to" id="toDate" useValueAsDate>
             </div>
           </div>
-          <button class="btn btn-primary btn-lg btn-block" type="submit">Parse</button>
+          <button class="btn btn-primary btn-lg btn-block" type="submit" i18n="@@parse">Parse</button>
         </form>
       </lcs-stat-card>
     </div>
   </div>
 </lcs-section>
 
-<lcs-section header="General">
+<lcs-section header="General" i18n-header="@@general">
   <div class="row">
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="From">
+      <lcs-stat-card header="From" i18n-header="@@dateFrom">
         <p class="stat-display">{{ startDate | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="To">
+      <lcs-stat-card header="To" i18n-header="@@dateTo">
         <p class="stat-display">{{ latestDate | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Total activity">
+      <lcs-stat-card header="Total activity" i18n-header="@@totalActivity">
         <p class="stat-display">{{ intervalActivity | number }}</p>
-        <p class="stat-unit">messages, stickers, calls, pictures, videos</p>
+        <p class="stat-unit" i18n="@@activityList">messages, stickers, calls, pictures, videos</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Timespan">
+      <lcs-stat-card header="Timespan" i18n-header="@@timespan">
         <div class="d-flex justify-content-between">
           <div>
             <p class="stat-display text-left">{{ daySpan | number }}</p>
-            <p class="stat-unit text-left">days</p>
+            <p class="stat-unit text-left" i18n="@@days">days</p>
           </div>
           <div>
             <p class="stat-display">{{ intervalActivity / daySpan | number:'1.0-2' }}</p>
-            <p class="stat-unit">activity / day</p>
+            <p class="stat-unit" i18n="@@activityPerDay">activity / day</p>
           </div>
         </div>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Activity ratio">
+      <lcs-stat-card header="Activity ratio" i18n-header="@@activityRatio">
         <div class="row">
           <div class="col-4">
             <p class="stat-display text-left">{{ activeDays | number }}</p>
-            <p class="stat-unit text-left">active days</p>
+            <p class="stat-unit text-left" i18n="@@activeDays">active days</p>
           </div>
           <div class="col-4">
             <p class="stat-display text-center text-primary">{{ activeDays / daySpan * 100 | number:'1.0-1' }}</p>
@@ -89,53 +89,53 @@
           </div>
           <div class="col-4">
             <p class="stat-display">{{ inactiveDays | number }}</p>
-            <p class="stat-unit">inactive days</p>
+            <p class="stat-unit" i18n="@@inactiveDays">inactive days</p>
           </div>
         </div>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Most active day">
+      <lcs-stat-card header="Most active day" i18n-header="@@mostActiveDay">
         <p class="stat-display">{{ mostActive.day | date:'fullDate' }}</p>
         <p class="stat-unit">{{ mostActive.count }} activities</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Links sent">
+      <lcs-stat-card header="Links sent" i18n-header="@@linksSent">
         <p class="stat-display">{{ numberOfUrls | number }}</p>
-        <p class="stat-unit">link</p>
+        <p class="stat-unit" i18n="@@links">links</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Calls">
+      <lcs-stat-card header="Calls" i18n-header="@@calls">
         <div class="d-flex justify-content-between">
           <div>
             <p class="stat-display text-left">{{ calls.numberOfCalls | number }}</p>
-            <p class="stat-unit text-left">calls</p>
+            <p class="stat-unit text-left" i18n="@@calls">calls</p>
           </div>
           <div>
             <p class="stat-display">{{ calls.duration / 60 / 60 | number:'1.0-1' }}</p>
-            <p class="stat-unit">hours</p>
+            <p class="stat-unit" i18n="@@hours">hours</p>
           </div>
         </div>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Longest activity streak">
+      <lcs-stat-card header="Longest activity streak" i18n-header="@@longestActivityStreak">
         <p class="stat-display">{{ longestStreak.daySpan | number }}</p>
-        <p class="stat-unit">days
+        <p class="stat-unit"><span i18n="@@days">days</span>
           <br>{{ longestStreak.begin | date:'fullDate' }} - {{ longestStreak.end | date:'fullDate' }}</p>
       </lcs-stat-card>
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Longest call">
+      <lcs-stat-card header="Longest call" i18n-header="@@longestCall">
         <p class="stat-display">{{ calls.longest / 60 / 60 | number:'1.0-1' }}</p>
-        <p class="stat-unit">hours
+        <p class="stat-unit"><span i18n="@@hours">hours</span>
           <span *ngIf="calls.longest > 0">
             <br>{{ calls.longestDay | date:'fullDate' }}</span>
         </p>
@@ -144,10 +144,10 @@
   </div>
 </lcs-section>
 
-<lcs-section header="Activity">
+<lcs-section header="Activity" i18n-header="@@activity">
   <div class="row">
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Messages">
+      <lcs-stat-card header="Messages" i18n-header="@@messages">
         <div>
           <ngx-charts-advanced-pie-chart [animations]="false" class="advanced-pie-chart" label="messages" [results]="authorMessages"
             [scheme]="colors">
@@ -157,7 +157,7 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Stickers">
+      <lcs-stat-card header="Stickers" i18n-header="@@stickers">
         <div>
           <ngx-charts-advanced-pie-chart [animations]="false" class="advanced-pie-chart" label="stickers" [results]="authorStickers"
             [scheme]="colors">
@@ -167,7 +167,7 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Pictures">
+      <lcs-stat-card header="Pictures" i18n-header="@@pictures">
         <div>
           <ngx-charts-advanced-pie-chart [animations]="false" class="advanced-pie-chart" label="pictures" [results]="authorPictures"
             [scheme]="colors">
@@ -177,7 +177,7 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Videos">
+      <lcs-stat-card header="Videos" i18n-header="@@videos">
         <div>
           <ngx-charts-advanced-pie-chart [animations]="false" class="advanced-pie-chart" label="videos" [results]="authorVideos" [scheme]="colors">
           </ngx-charts-advanced-pie-chart>
@@ -186,22 +186,22 @@
     </div>
 
     <div class="col-12 mb-3">
-      <lcs-stat-card header="Most frequent links">
+      <lcs-stat-card header="Most frequent links" i18n-header="@@mostFrequentLinks">
         <div style="height: 600px" *ngIf="numberOfUrls > 0">
           <ngx-charts-bar-horizontal-2d [animations]="false" [results]="authorUrls" [legend]="true" legendTitle="Names" [xAxis]="true"
             [showXAxisLabel]="true" xAxisLabel="# of occurrences" [yAxis]="true" [scheme]="colors">
           </ngx-charts-bar-horizontal-2d>
         </div>
-        <p class="mb-0" *ngIf="numberOfUrls === 0">No links have been sent.</p>
+        <p class="mb-0" *ngIf="numberOfUrls === 0" i18n="@@noLinks">No links have been sent.</p>
       </lcs-stat-card>
     </div>
   </div>
 </lcs-section>
 
-<lcs-section header="Activity by time">
+<lcs-section header="Activity by time" i18n-header="@@activityByTime">
   <div class="row">
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="By hour">
+      <lcs-stat-card header="By hour" i18n-header="@@byHour">
         <div style="height: 600px">
           <ngx-charts-bar-horizontal [animations]="false" [results]="byHour" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
           </ngx-charts-bar-horizontal>
@@ -210,7 +210,7 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="By weekday">
+      <lcs-stat-card header="By weekday" i18n-header="@@byWeekday">
         <div style="height: 300px">
           <ngx-charts-bar-horizontal [animations]="false" [results]="byWeekday" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
           </ngx-charts-bar-horizontal>
@@ -219,7 +219,7 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="By month">
+      <lcs-stat-card header="By month" i18n-header="@@byMonth">
         <div style="height: 400px">
           <ngx-charts-bar-horizontal [animations]="false" [results]="byMonth" [xAxis]="true" [yAxis]="true" [scheme]="monoColor">
           </ngx-charts-bar-horizontal>
@@ -228,7 +228,7 @@
     </div>
 
     <div class="col-md-6 mb-3">
-      <lcs-stat-card header="Calendar">
+      <lcs-stat-card header="Calendar" i18n-header="@@calendar">
         <div class="d-flex justify-content-center">
           <lcs-calendar></lcs-calendar>
         </div>

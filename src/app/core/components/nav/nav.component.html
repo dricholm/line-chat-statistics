@@ -1,30 +1,30 @@
-<button class="nav-button p-4 text-info d-block d-md-none" type="button" (click)="toggleNav()">
+<button class="nav-button p-4 text-info d-block d-md-none" type="button" (click)="toggleNav()" i18n="@@menu">
   Menu
 </button>
 <nav class="navbar navbar-expand-md navbar-dark p-4 p-md-2" [ngClass]="{ 'show': isShown }">
-  <button class="nav-button text-info d-block d-md-none text-left" type="button" (click)="toggleNav()">
+  <button class="nav-button text-info d-block d-md-none text-left" type="button" (click)="toggleNav()" i18n="@@close">
     Close
   </button>
   <ul class="navbar-nav">
     <li class="nav-item">
-      <a class="nav-link" pageScroll href="#about" (click)="menuClick()">About</a>
+      <a class="nav-link" pageScroll href="#about" (click)="menuClick()" i18n="@@about">About</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" pageScroll href="#upload" (click)="menuClick()">Upload</a>
+      <a class="nav-link" pageScroll href="#upload" (click)="menuClick()" i18n="@@upload">Upload</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" pageScroll href="#faqs" (click)="menuClick()">FAQs</a>
+      <a class="nav-link" pageScroll href="#faqs" (click)="menuClick()" i18n="@@faq">FAQs</a>
     </li>
     <li class="nav-item">
-      <a class="nav-link" pageScroll href="#contact" (click)="menuClick()">Contact</a>
+      <a class="nav-link" pageScroll href="#contact" (click)="menuClick()" i18n="@@contact">Contact</a>
     </li>
   </ul>
   <ul class="navbar-nav">
     <li>
-      <a class="nav-link font-weight-light" href="#" (click)="menuClick()">English</a>
+      <a class="nav-link font-weight-light" href="/en">English</a>
     </li>
     <li>
-      <a class="nav-link font-weight-light" href="#" (click)="menuClick()">日本語</a>
+      <a class="nav-link font-weight-light" href="/ja">日本語</a>
     </li>
   </ul>
 </nav>

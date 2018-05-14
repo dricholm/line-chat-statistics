@@ -1,0 +1,511 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<xliff version="1.2" xmlns="urn:oasis:names:tc:xliff:document:1.2">
+  <file source-language="en" target-language="ja-JP" datatype="plaintext" original="ng2.template">
+    <body>
+      <trans-unit id="about" datatype="html">
+        <source>About</source>
+        <target>サイトについて</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">3</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faqLong" datatype="html">
+        <source>Frequently Asked Questions</source>
+        <target>よくある質問</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="contact" datatype="html">
+        <source>Contact</source>
+        <target>コンタクト</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">19</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="notfoundLong" datatype="html">
+        <source>
+    The requested page was not found.
+  </source>
+        <target>
+    ページが見つかりませんでした。
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="returnToMain" datatype="html">
+        <source>Return to home page</source>
+        <target>ホームへ戻る</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/not-found/not-found.component.ts</context>
+          <context context-type="linenumber">6</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="members" datatype="html">
+        <source>Members</source>
+        <target>メンバー</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">4</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="firstMessage" datatype="html">
+        <source>First message</source>
+        <target>初めてのメッセージ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="latestMessage" datatype="html">
+        <source>Latest message</source>
+        <target>最新のメッセージ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">18</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dateFrom" datatype="html">
+        <source>From</source>
+        <target>始まり</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">46</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dateTo" datatype="html">
+        <source>To</source>
+        <target>終わり</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">32</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">52</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="parse" datatype="html">
+        <source>Parse</source>
+        <target>解析</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/upload/upload.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="interval" datatype="html">
+        <source>Interval</source>
+        <target>間隔</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activityList" datatype="html">
+        <source>messages, stickers, calls, pictures, videos</source>
+        <target>メッセージ、スタンプ、通話、写真、動画</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">60</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="totalActivity" datatype="html">
+        <source>Total activity</source>
+        <target>活動記録</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">58</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="days" datatype="html">
+        <source>days</source>
+        <target>日</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">69</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">130</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activityPerDay" datatype="html">
+        <source>activity / day</source>
+        <target>活動/日</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">73</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="timespan" datatype="html">
+        <source>Timespan</source>
+        <target>間隔</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">65</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activeDays" datatype="html">
+        <source>active days</source>
+        <target>活動あるの日</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">84</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="inactiveDays" datatype="html">
+        <source>inactive days</source>
+        <target>活動無しの日</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">92</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activityRatio" datatype="html">
+        <source>Activity ratio</source>
+        <target>活動比率</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">80</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mostActiveDay" datatype="html">
+        <source>Most active day</source>
+        <target>最も会話した日</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">99</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="links" datatype="html">
+        <source>links</source>
+        <target>リンク</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">108</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="linksSent" datatype="html">
+        <source>Links sent</source>
+        <target>送ったリンク</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">106</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calls" datatype="html">
+        <source>calls</source>
+        <target>通話回数</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">117</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">113</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="hours" datatype="html">
+        <source>hours</source>
+        <target>時間</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">121</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">138</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="longestActivityStreak" datatype="html">
+        <source>Longest activity streak</source>
+        <target>最も長いストリーク</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">128</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="longestCall" datatype="html">
+        <source>Longest call</source>
+        <target>最も長い通話</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">136</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="general" datatype="html">
+        <source>General</source>
+        <target>一般的</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">43</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="messages" datatype="html">
+        <source>Messages</source>
+        <target>メッセージ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">150</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="stickers" datatype="html">
+        <source>Stickers</source>
+        <target>スタンプ</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">160</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="pictures" datatype="html">
+        <source>Pictures</source>
+        <target>写真</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">170</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="videos" datatype="html">
+        <source>Videos</source>
+        <target>動画</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">180</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="noLinks" datatype="html">
+        <source>No links have been sent.</source>
+        <target>リンクはありません。</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">195</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="mostFrequentLinks" datatype="html">
+        <source>Most frequent links</source>
+        <target>最も頻繁なリンク</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">189</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activity" datatype="html">
+        <source>Activity</source>
+        <target>活動</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">147</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="byHour" datatype="html">
+        <source>By hour</source>
+        <target>時間</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">204</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="byWeekday" datatype="html">
+        <source>By weekday</source>
+        <target>日</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">213</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="byMonth" datatype="html">
+        <source>By month</source>
+        <target>月</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">222</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="calendar" datatype="html">
+        <source>Calendar</source>
+        <target>カレンダー</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">231</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="activityByTime" datatype="html">
+        <source>Activity by time</source>
+        <target>時</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/stats/stats.component.ts</context>
+          <context context-type="linenumber">201</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="menu" datatype="html">
+        <source>
+  Menu
+</source>
+        <target>
+  メニュー
+</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">1</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="close" datatype="html">
+        <source>
+    Close
+  </source>
+        <target>
+    閉じる
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">5</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="upload" datatype="html">
+        <source>Upload</source>
+        <target>アップロード</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/upload/upload.component.ts</context>
+          <context context-type="linenumber">2</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faq" datatype="html">
+        <source>FAQs</source>
+        <target>よくある質問</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/nav/nav.component.ts</context>
+          <context context-type="linenumber">16</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="browse" datatype="html">
+        <source>
+          Browse
+        </source>
+        <target>
+          ブラウズ
+        </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/upload/upload.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="headerSub" datatype="html">
+        <source>
+      Get interesting informations from your conversations
+    </source>
+        <target>
+      LINE会話から色々な情報を貰いましょう
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/landing-header/landing-header.component.ts</context>
+          <context context-type="linenumber">7</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="startNow" datatype="html">
+        <source>
+      Start now
+    </source>
+        <target>
+      始めよう
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/landing-header/landing-header.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="learnMore" datatype="html">
+        <source>
+      Learn more
+    </source>
+        <target>
+      もっと詳しく
+    </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/landing-header/landing-header.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayMon" datatype="html">
+        <source>Mon</source>
+        <target>月</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/calendar/calendar.component.ts</context>
+          <context context-type="linenumber">9</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayTue" datatype="html">
+        <source>Tue</source>
+        <target>火</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/calendar/calendar.component.ts</context>
+          <context context-type="linenumber">10</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayWed" datatype="html">
+        <source>Wed</source>
+        <target>水</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/calendar/calendar.component.ts</context>
+          <context context-type="linenumber">11</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayThu" datatype="html">
+        <source>Thu</source>
+        <target>木</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/calendar/calendar.component.ts</context>
+          <context context-type="linenumber">12</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="dayFri" datatype="html">
+        <source>Fri</source>
+        <target>金</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/calendar/calendar.component.ts</context>
+          <context context-type="linenumber">13</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daySat" datatype="html">
+        <source>Sat</source>
+        <target>土</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/calendar/calendar.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="daySun" datatype="html">
+        <source>Sun</source>
+        <target>日</target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/calendar/calendar.component.ts</context>
+          <context context-type="linenumber">15</context>
+        </context-group>
+      </trans-unit>
+    </body>
+  </file>
+</xliff>
