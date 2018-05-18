@@ -1,25 +1,50 @@
 <lcs-landing-header></lcs-landing-header>
 
 <lcs-section id="about" header="About" i18n-header="@@about">
-  <p class="text-justify">This website will parse your conversation log and display various informations from it. Everything happens inside your
-    browser, no information will be seen nor collected by us. Also no registration is needed.</p>
-    <lcs-about-guide></lcs-about-guide>
+  <p class="text-justify">
+    This website will parse your conversation log and display various informations from it. Everything happens inside your browser,
+    no information will be seen nor collected by us. Also no registration is needed.
+  </p>
+  <lcs-about-guide></lcs-about-guide>
 </lcs-section>
 
-<lcs-upload id="upload"></lcs-upload>
+<lcs-upload id="parse"></lcs-upload>
 
 <lcs-section id="faqs" header="Frequently Asked Questions" i18n-header="@@faqLong">
-  <p class="text-justify font-weight-bold">Question 1</p>
-  <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi facilis, similique unde sed temporibus itaque! Delectus
-    earum expedita veritatis rerum consequuntur laboriosam, et odio minima quos aspernatur eos quod inventore.</p>
+  <p class="text-justify font-weight-bold" i18n="@@faqHowDoesItWorkQuestion">
+    How does it work?
+  </p>
+  <p class="text-justify" i18n="@@faqHowDoesItWorkAnswer">
+    When you upload a chat history text file your browser will parse each message and display various statistics.
+  </p>
 
-  <p class="text-justify font-weight-bold">Question 2</p>
-  <p class="text-justify">Lorem ipsum dolor sit amet consectetur adipisicing elit. Commodi facilis, similique unde sed temporibus itaque! Delectus
-    earum expedita veritatis rerum consequuntur laboriosam, et odio minima quos aspernatur eos quod inventore.</p>
+  <p class="text-justify font-weight-bold" i18n="@@faqChatHistoryQuestion">
+    Will my chat history be stored or shared with anyone?
+  </p>
+  <p class="text-justify" i18n="@@faqChatHistoryAnswer">
+    No. Your chat history will only be read by your browser. It will not be sent anywhere.
+  </p>
+
+  <p class="text-justify font-weight-bold" i18n="@@faqSiteNotWorkingQuestion">
+    The site is not working for me. What can I do?
+  </p>
+  <p class="text-justify" i18n="@@faqSiteNotWorkingAnswer">
+    Recommended browsers are Google Chrome and Mozilla Firefox. If the issue still persists you can submit an issue on GitHub.
+    Please include as much information as possible. (Browser type and version, browser and LINE language setting etc.)
+  </p>
+
+  <p class="text-justify font-weight-bold" i18n="@@faqIssueQuestion">
+    I have an idea which can improve the site. What can I do?
+  </p>
+  <p class="text-justify" i18n="@@faqIssueAnswer">
+    Feel free to contact me, create a new issue or pull request on GitHub. See the contact section for more information.
+  </p>
 </lcs-section>
 
 <lcs-section id="contact" header="Contact" i18n-header="@@contact">
-  <p class="text-justify">If you notice any problems or have any comments about the site feel free to contact me by
+  <p class="text-justify">
+    If you notice any problems or have any comments about the site feel free to contact me by
     <a href="mailto:david.richolm@gmail.com?subject=LINE%20chat%20statistics">email</a> or create a new issue on
-    <a href="#">GitHub</a>.</p>
+    <a href="https://github.com/dricholm/line-chat-statistics">GitHub</a>.
+  </p>
 </lcs-section>

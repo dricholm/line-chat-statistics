@@ -334,17 +334,6 @@
           <context context-type="linenumber">5</context>
         </context-group>
       </trans-unit>
-      <trans-unit id="upload" datatype="html">
-        <source>Upload</source>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/core/components/nav/nav.component.ts</context>
-          <context context-type="linenumber">13</context>
-        </context-group>
-        <context-group purpose="location">
-          <context context-type="sourcefile">app/core/components/upload/upload.component.ts</context>
-          <context context-type="linenumber">2</context>
-        </context-group>
-      </trans-unit>
       <trans-unit id="faq" datatype="html">
         <source>FAQs</source>
         <context-group purpose="location">
