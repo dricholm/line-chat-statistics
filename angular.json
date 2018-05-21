@@ -38,7 +38,8 @@
               "aot": true,
               "extractLicenses": true,
               "vendorChunk": false,
-              "buildOptimizer": true
+              "buildOptimizer": true,
+              "outputPath": "dist/en/"
             },
             "production-ja": {
               "fileReplacements": [
@@ -56,7 +57,7 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "outputPath": "dist/line-chat-statistics-ja/",
+              "outputPath": "dist/ja/",
               "i18nFile": "src/locale/messages.ja.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "ja",
@@ -64,7 +65,7 @@
             },
             "ja": {
               "aot": true,
-              "outputPath": "dist/line-chat-statistics-ja/",
+              "outputPath": "dist/ja/",
               "i18nFile": "src/locale/messages.ja.xlf",
               "i18nFormat": "xlf",
               "i18nLocale": "ja",

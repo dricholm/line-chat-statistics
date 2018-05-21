@@ -4,6 +4,10 @@
 
 This web app can read LINE chat logs and parse them on client-side for statistics. Made with Angular.
 
+## Live demo
+
+The web app is live on GitHub pages. You can try it out by clicking [here](https://dricholm.github.io/line-chat-statistics).
+
 ## Starting the web app
 
 To run the web application you need [Node.js](https://nodejs.org). The following commands can be used:

@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+
 import { fade } from '@app/shared/animations/fade.animation';
 
 @Component({
