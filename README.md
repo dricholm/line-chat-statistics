@@ -16,6 +16,7 @@ To run the web application you need [Node.js](https://nodejs.org). The following
 * `npm run start:ja`: Start the application locally in japanese.
 * `npm run build`: Build the english application in dist folder.
 * `npm run build:ja`: Build the japanese application in dist folder.
+* `npm run deploy`: Build english and japanese version and deploy with [angular-cli-ghpages](https://github.com/angular-schule/angular-cli-ghpages). (Note: Need to install angular-cli-ghpages globally)
 * `npm test`: Run unit tests.
 * `npm run coverage`: Generate coverage in coverage folder.
 

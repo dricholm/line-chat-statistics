@@ -505,7 +505,7 @@
       Get interesting informations from your conversations
     </source>
         <target>
-      LINE会話から色々な情報を貰いましょう
+      LINEの会話から色々な情報を貰いましょう
     </target>
         <context-group purpose="location">
           <context context-type="sourcefile">app/core/components/landing-header/landing-header.component.ts</context>
