@@ -187,7 +187,7 @@
 
     <div class="col-12 mb-3">
       <lcs-stat-card header="Most frequent links" i18n-header="@@mostFrequentLinks">
-        <div style="height: 600px" *ngIf="numberOfUrls > 0">
+        <div [ngStyle]="{'height': 350 * authorNames.length + 'px'}" *ngIf="numberOfUrls > 0">
           <ngx-charts-bar-horizontal-2d [animations]="false" [results]="authorUrls" [legend]="true" legendTitle="Names" [xAxis]="true"
             [showXAxisLabel]="true" xAxisLabel="# of occurrences" [yAxis]="true" [scheme]="colors">
           </ngx-charts-bar-horizontal-2d>

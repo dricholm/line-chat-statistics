@@ -49,6 +49,8 @@ export class MessageService {
     numberOfCalls: number;
   } = { duration: 0, longest: 0, longestDay: 0, numberOfCalls: 0 };
 
+  private _groupCallStart: Date;
+
   private _days: {
     [day: number]: {
       activityCount: number;
@@ -473,6 +475,10 @@ export class MessageService {
   }
 
   private parseMessageContent(message: Message): void {
+    if (message.author.match(/(?:がグループ|changed the group's)/)) {
+      return;
+    }
+
     if (typeof this._authors[message.author] === 'undefined') {
       this._authors[message.author] = {
         messages: 0,
@@ -484,14 +490,17 @@ export class MessageService {
 
     switch (message.text) {
       case '[スタンプ]':
+      case '[Sticker]':
         this._authors[message.author].stickers += 1;
         break;
 
       case '[写真]':
+      case '[Photo]':
         this._authors[message.author].pictures += 1;
         break;
 
       case '[動画]':
+      case '[Video]':
         this._authors[message.author].videos += 1;
         break;
 
@@ -552,7 +561,7 @@ export class MessageService {
     this._days[day][`messages_${message.author}`] += 1;
 
     const callMatch = message.text.match(
-      /^通話時間 (?:(\d{1,2}):)?(\d{1,2}):(\d{2})$/
+      /^(?:通話時間|Call time) (?:(\d{1,2}):)?(\d{1,2}):(\d{2})$/
     );
     if (callMatch) {
       const hour = callMatch[1] ? parseInt(callMatch[1], 10) * 60 * 60 : 0;
@@ -563,6 +572,26 @@ export class MessageService {
       this._calls.duration += hour + min + sec;
       if (hour + min + sec > this._calls.longest) {
         this._calls.longest = hour + min + sec;
+        this._calls.longestDay = day;
+      }
+    }
+
+    if (
+      message.text.match(
+        /(?:グループ音声通話が開始されました。|Group voice call started.)/
+      )
+    ) {
+      this._calls.numberOfCalls += 1;
+      this._groupCallStart = message.date;
+    }
+
+    if (
+      message.text.match(/(?:グループ通話が終了しました。|Group call ended.)/)
+    ) {
+      const diff = message.date.getTime() - this._groupCallStart.getTime();
+      this._calls.duration += diff / 1000;
+      if (diff / 1000 > this._calls.longest) {
+        this._calls.longest = diff / 1000;
         this._calls.longestDay = day;
       }
     }

@@ -58,7 +58,10 @@ export class CalendarComponent implements OnInit {
         if (typeof day === 'undefined' || day.activityCount === 0) {
           days.push({ activityCount: 0, color: '#e5e5e5', date: week });
         } else {
-          const alpha = Math.min(day.activityCount / this.maxActivity, 1);
+          const alpha = Math.min(
+            day.activityCount / (this.messageService.mostActive.count / 2),
+            1
+          );
           const color: Array<number> = [
             alpha * this.acitivtyColor[0] +
               (1 - alpha) * this.backgroundColor[0],
