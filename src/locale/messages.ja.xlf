@@ -14,6 +14,104 @@
           <context context-type="linenumber">10</context>
         </context-group>
       </trans-unit>
+      <trans-unit id="faqHowDoesItWorkQuestion" datatype="html">
+        <source>
+    How does it work?
+  </source>
+        <target>
+    サイトの仕組みについて教えて下さい。
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">14</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faqHowDoesItWorkAnswer" datatype="html">
+        <source>
+    When you upload a chat history text file your browser will parse each message and display various statistics.
+  </source>
+        <target>
+    トークのテキストファイルをアップロードするとブラウザからメッセージが解析されて色々な情報が表示されます。
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">17</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faqChatHistoryQuestion" datatype="html">
+        <source>
+    Will my chat history be stored or shared with anyone?
+  </source>
+        <target>
+    トークの履歴は保存されますか？第三者に共有されますか？
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">21</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faqChatHistoryAnswer" datatype="html">
+        <source>
+    No. Your chat history will only be read by your browser. It will not be sent anywhere.
+  </source>
+        <target>
+    いいえ。トークの履歴はあなたのブラウザ上でのみ解析・表示されます。他者に共有されることはありません。
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">24</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faqSiteNotWorkingQuestion" datatype="html">
+        <source>
+    The site is not working for me. What can I do?
+  </source>
+        <target>
+    サイトに問題を見つけました。どうすれば良いですか？
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">28</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faqSiteNotWorkingAnswer" datatype="html">
+        <source>
+    Recommended browsers are Google Chrome and Mozilla Firefox. If the issue still persists you can submit an issue on GitHub.
+    Please include as much information as possible. (Browser type and version, browser and LINE language setting etc.)
+  </source>
+        <target>
+    おすすめのブラウザはGoogle ChromまたはMozilla Firefoxです。もし問題が解決しない場合はGitHubにIssueを提出する事が出来ます。
+    （あなたの状況を教えて下さい。ブラウザ、ブラウザのバージョン、言語の設定など）
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">31</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faqIssueQuestion" datatype="html">
+        <source>
+    I have an idea which can improve the site. What can I do?
+  </source>
+        <target>
+    サイトに対して意見がある場合は、どうすれば良いですか？
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">36</context>
+        </context-group>
+      </trans-unit>
+      <trans-unit id="faqIssueAnswer" datatype="html">
+        <source>
+    Feel free to contact me, create a new issue or pull request on GitHub. See the contact section for more information.
+  </source>
+        <target>
+    お気軽にご連絡ください。連絡先はコンタクトをご覧ください。
+  </target>
+        <context-group purpose="location">
+          <context context-type="sourcefile">app/core/components/home/home.component.ts</context>
+          <context context-type="linenumber">39</context>
+        </context-group>
+      </trans-unit>
       <trans-unit id="faqLong" datatype="html">
         <source>Frequently Asked Questions</source>
         <target>よくある質問</target>
