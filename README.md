@@ -1,5 +1,7 @@
 # Line Chat Statistics
 
+[![Build Status](https://travis-ci.com/dricholm/line-chat-statistics.svg?branch=master)](https://travis-ci.com/dricholm/line-chat-statistics)
+
 ## Description
 
 This web app can read LINE chat logs and parse them on client-side for statistics. Made with Angular.
@@ -26,7 +28,7 @@ To run the web application you need [Node.js](https://nodejs.org). The following
 * [angular-date-value-accessor](https://github.com/johanneshoppe/angular-date-value-accessor)
 * [Bootstrap](http://getbootstrap.com)
 * [Husky](https://github.com/typicode/husky)
-* [line-chat-parser](https://github.com/meyfa/line-chat-parser) (Note: Using newer GitHub files instead of current 1.1.0 version on NPM)
+* [line-chat-parser](https://github.com/meyfa/line-chat-parser)
 * [ngx-charts](https://github.com/swimlane/ngx-charts)
 * [ngx-page-scroll](https://github.com/Nolanus/ngx-page-scroll)
 * [Prettier](https://prettier.io)
