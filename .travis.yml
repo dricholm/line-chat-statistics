@@ -1,0 +1,30 @@
+dist: trusty
+
+language: node_js
+node_js:
+  - 'node'
+
+branches:
+  only:
+    - master
+
+addons:
+  apt:
+    sources:
+      - google-chrome
+    packages:
+      - google-chrome-stable
+
+script:
+  - npm run lint
+  - npm run test:ci
+  - npm run deploy:build:en
+  - npm run deploy:build:ja
+
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: dist
+  on:
+    branch: master
