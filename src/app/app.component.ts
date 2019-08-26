@@ -1,7 +1,6 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 import { Router } from '@angular/router';
 import { trigger, transition, style, animate } from '@angular/animations';
-import { PageScrollConfig } from 'ngx-page-scroll';
 
 @Component({
   animations: [
@@ -23,20 +22,10 @@ import { PageScrollConfig } from 'ngx-page-scroll';
   styleUrls: ['./app.component.scss'],
   templateUrl: './app.component.html',
 })
-export class AppComponent implements OnInit {
-  constructor(public router: Router) {}
+export class AppComponent {
+  constructor(private router: Router) {}
 
-  ngOnInit(): void {
-    this.setupPageScroll();
-  }
-
-  private setupPageScroll(): void {
-    PageScrollConfig.defaultDuration = 750;
-    PageScrollConfig.defaultEasingLogic = {
-      ease: (t: number, b: number, c: number, d: number): number => {
-        t /= d;
-        return -c * t * (t - 2) + b;
-      },
-    };
+  get displayHeader(): boolean {
+    return this.router.url !== '/' && !this.router.url.startsWith('/#');
   }
 }

@@ -6,6 +6,7 @@ import { Message } from '@app/core/interfaces/message';
 
 @Injectable()
 export class MessageService {
+  /* tslint:disable:variable-name */
   private messages: Array<Message> = [];
 
   private _authors: {

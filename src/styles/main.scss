@@ -4,21 +4,18 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700');
 @import url('https://fonts.googleapis.com/css?family=Anton');
 
-@import 'variables';
-@import 'node_modules/bootstrap/scss/mixins';
+@import '~src/styles/declarations';
+@import '~src/styles/bootstrap';
 
-@import 'node_modules/bootstrap/scss/buttons';
-@import 'node_modules/bootstrap/scss/card';
-@import 'node_modules/bootstrap/scss/forms';
-@import 'node_modules/bootstrap/scss/grid';
-@import 'node_modules/bootstrap/scss/nav';
-@import 'node_modules/bootstrap/scss/navbar';
-@import 'node_modules/bootstrap/scss/reboot';
-@import 'node_modules/bootstrap/scss/type';
-@import 'node_modules/bootstrap/scss/utilities';
-
+html,
 body {
   font-family: Roboto, Helvetica, Arial, sans-serif;
+  height: 100%;
+  scroll-behavior: smooth;
+
+  @media (prefers-reduced-motion: reduce) {
+    scroll-behavior: auto;
+  }
 }
 
 .btn {

@@ -4,13 +4,8 @@
     'header'
     'main'
     'footer';
-  grid-template-columns: 100%;
   grid-template-rows: auto 1fr auto;
   min-height: 100vh;
-}
-
-header {
-  grid-area: header;
 }
 
 main {

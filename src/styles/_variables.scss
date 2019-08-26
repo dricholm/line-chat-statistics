@@ -17,7 +17,7 @@ $theme-colors: map-merge(
     'info': $info,
     'grey': $grey,
     'dark': $dark,
-    'light': $light
+    'light': $light,
   ),
   $theme-colors
 );
@@ -38,6 +38,3 @@ $font-size-base: 1.125rem;
 $font-family-sans-serif: Roboto, Helvetica, Arial, sans-serif;
 
 $headings-font-family: Ubuntu, Roboto, Helvetica, Arial, sans-serif;
-
-@import 'node_modules/bootstrap/scss/functions';
-@import 'node_modules/bootstrap/scss/variables';
