@@ -78,7 +78,7 @@ export class CalendarComponent implements OnInit {
           });
         }
       }
-      this.weeks.push({ week: dayIter.getTime(), days: days });
+      this.weeks.push({ week: dayIter.getTime(), days });
     }
   }
 

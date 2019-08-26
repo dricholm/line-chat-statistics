@@ -41,16 +41,18 @@ describe('StatsComponent', () => {
     expect(component).toBeTruthy();
   });
 
-  it(
-    'should display start date',
-    inject([MessageService], (service: MessageService) => {
+  it('should display start date', inject(
+    [MessageService],
+    (service: MessageService) => {
       const spy = spyOnProperty(
         service,
         'activityLength',
         'get'
       ).and.returnValue(1);
       spyOn(service, 'get').and.callFake(() => ({
+        author: 'Author',
         date: new Date('2015.03.20'),
+        text: 'Text',
       }));
 
       fixture.detectChanges();
@@ -62,19 +64,21 @@ describe('StatsComponent', () => {
           'lcs-stat-card[header="First message"'
         ).textContent
       ).toContain('March 20, 2015');
-    })
-  );
+    }
+  ));
 
-  it(
-    'should display latest date',
-    inject([MessageService], (service: MessageService) => {
+  it('should display latest date', inject(
+    [MessageService],
+    (service: MessageService) => {
       const spy = spyOnProperty(
         service,
         'activityLength',
         'get'
       ).and.returnValue(5);
       spyOn(service, 'get').and.callFake(() => ({
+        author: 'Author',
         date: new Date('2018.04.26'),
+        text: 'Text',
       }));
 
       fixture.detectChanges();
@@ -86,12 +90,12 @@ describe('StatsComponent', () => {
           'lcs-stat-card[header="Latest message"'
         ).textContent
       ).toContain('April 26, 2018');
-    })
-  );
+    }
+  ));
 
-  it(
-    'should display day span',
-    inject([MessageService], (service: MessageService) => {
+  it('should display day span', inject(
+    [MessageService],
+    (service: MessageService) => {
       const spy = spyOnProperty(service, 'daySpan', 'get').and.returnValue(20);
 
       fixture.detectChanges();
@@ -101,6 +105,6 @@ describe('StatsComponent', () => {
         fixture.nativeElement.querySelector('lcs-stat-card[header="Timespan"')
           .textContent
       ).toContain('20');
-    })
-  );
+    }
+  ));
 });

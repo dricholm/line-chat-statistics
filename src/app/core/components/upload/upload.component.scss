@@ -1,4 +1,4 @@
-@import '~styles/variables';
+@import '~src/styles/declarations';
 
 :host {
   background-color: $secondary;
@@ -24,13 +24,13 @@
     'upload'
     'text'
     'parse';
-  grid-template-columns: 100%;
-  grid-template-rows: 100% 100% 100%;
+  grid-template-columns: 1fr;
+  grid-template-rows: repeat(1fr, 3);
 
   @media (min-width: map-get($grid-breakpoints, 'md')) {
     grid-template-areas: 'upload text parse';
     grid-template-columns: auto 1fr auto;
-    grid-template-rows: 100%;
+    grid-template-rows: 1fr;
   }
 }
 

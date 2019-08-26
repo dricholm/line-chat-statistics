@@ -4,7 +4,6 @@ import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 import { HeaderComponent } from '@app/core/components/header/header.component';
 import { FooterComponent } from '@app/core/components/footer/footer.component';
-import { PageScrollConfig } from 'ngx-page-scroll';
 
 describe('AppComponent', () => {
   let component: AppComponent;
@@ -24,13 +23,5 @@ describe('AppComponent', () => {
 
   it('should create the app', async(() => {
     expect(component).toBeTruthy();
-  }));
-
-  it('should set PageScrollConfig', async(() => {
-    const defaultEasingLogic = PageScrollConfig.defaultEasingLogic;
-    const defaultDuration = PageScrollConfig.defaultDuration;
-    fixture.detectChanges();
-    expect(PageScrollConfig.defaultDuration).not.toEqual(defaultDuration);
-    expect(PageScrollConfig.defaultEasingLogic).not.toEqual(defaultEasingLogic);
   }));
 });
