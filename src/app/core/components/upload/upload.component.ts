@@ -18,9 +18,9 @@ export class UploadComponent {
 
   constructor(private messageService: MessageService, private router: Router) {}
 
-  onChange($event): void {
+  onChange({ target }: { target: HTMLInputElement }): void {
     this.error = false;
-    this.file = $event.target.files[0];
+    this.file = target.files[0];
     this.text = this.file
       ? `Selected: ${this.file.name}`
       : 'Select a chat log file';
@@ -37,7 +37,7 @@ export class UploadComponent {
       () => {
         this.text = 'Parsing file, please wait';
       },
-      error => {
+      _ => {
         this.text = 'Error during parsing';
         this.file = null;
         this.error = true;

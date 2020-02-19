@@ -1,15 +1,14 @@
 import { async, ComponentFixture, TestBed } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { RouterTestingModule } from '@angular/router/testing';
 
-import { HomeComponent } from './home.component';
+import { AboutGuideComponent } from '@app/core/components/about-guide/about-guide.component';
+import { FooterComponent } from '@app/core/components/footer/footer.component';
 import { LandingHeaderComponent } from '@app/core/components/landing-header/landing-header.component';
 import { NavComponent } from '@app/core/components/nav/nav.component';
 import { SectionComponent } from '@app/core/components/section/section.component';
 import { UploadComponent } from '@app/core/components/upload/upload.component';
-import { FooterComponent } from '@app/core/components/footer/footer.component';
-import { MessageService } from '@app/core/services/message.service';
-import { AboutGuideComponent } from '@app/core/components/about-guide/about-guide.component';
+import { HomeComponent } from '@app/core/components/home/home.component';
 
 describe('HomeComponent', () => {
   let component: HomeComponent;
@@ -27,7 +26,6 @@ describe('HomeComponent', () => {
         AboutGuideComponent,
       ],
       imports: [NoopAnimationsModule, RouterTestingModule],
-      providers: [MessageService],
     }).compileComponents();
   }));
 

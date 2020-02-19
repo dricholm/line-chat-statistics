@@ -24,11 +24,11 @@ describe('NavComponent', () => {
 
   it('should toggle nav', () => {
     const button = fixture.nativeElement.querySelector('.nav-button');
-    expect(component.isShown).toBe(false, 'Nav is already shown');
+    expect(component.isShown).toBe(false);
     button.click();
-    expect(component.isShown).toBe(true, 'Nav does not appear');
+    expect(component.isShown).toBe(true);
     const link = fixture.nativeElement.querySelector('.nav-link');
     link.click();
-    expect(component.isShown).toBe(false, 'Nav does not disappear');
+    expect(component.isShown).toBe(false);
   });
 });

@@ -4,9 +4,10 @@ import * as LineChatParser from 'line-chat-parser';
 
 import { Message } from '@app/core/interfaces/message';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class MessageService {
-  /* tslint:disable:variable-name */
   private messages: Array<Message> = [];
 
   private _authors: {

@@ -3,7 +3,9 @@ import { CanActivate, Router } from '@angular/router';
 
 import { MessageService } from '@app/core/services/message.service';
 
-@Injectable()
+@Injectable({
+  providedIn: 'root',
+})
 export class StatGuard implements CanActivate {
   constructor(private service: MessageService, private router: Router) {}
 

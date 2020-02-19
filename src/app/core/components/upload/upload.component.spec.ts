@@ -1,16 +1,16 @@
 import {
   async,
   ComponentFixture,
-  TestBed,
   inject,
+  TestBed,
 } from '@angular/core/testing';
-import { RouterTestingModule } from '@angular/router/testing';
 import { NoopAnimationsModule } from '@angular/platform-browser/animations';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 import { of, throwError } from 'rxjs';
 
-import { UploadComponent } from './upload.component';
+import { UploadComponent } from '@app/core/components/upload/upload.component';
 import { MessageService } from '@app/core/services/message.service';
-import { Router } from '@angular/router';
 
 describe('UploadComponent', () => {
   let component: UploadComponent;
@@ -20,7 +20,6 @@ describe('UploadComponent', () => {
     TestBed.configureTestingModule({
       declarations: [UploadComponent],
       imports: [NoopAnimationsModule, RouterTestingModule],
-      providers: [MessageService],
     }).compileComponents();
   }));
 
