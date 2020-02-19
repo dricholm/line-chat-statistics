@@ -1,4 +1,10 @@
-import { Directive, ElementRef, forwardRef, HostListener, Renderer2 } from '@angular/core';
+import {
+  Directive,
+  ElementRef,
+  forwardRef,
+  HostListener,
+  Renderer2,
+} from '@angular/core';
 import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 
 @Directive({
@@ -13,10 +19,10 @@ import { ControlValueAccessor, NG_VALUE_ACCESSOR } from '@angular/forms';
 })
 export class DateInputDirective implements ControlValueAccessor {
   @HostListener('input', ['$event.target.valueAsDate'])
-  onChange = (_: any) => {};
+  onChange: (_: any) => void;
 
   @HostListener('blur', [])
-  onTouched = () => {};
+  onTouched: () => void;
 
   constructor(private elementRef: ElementRef, private renderer: Renderer2) {}
 

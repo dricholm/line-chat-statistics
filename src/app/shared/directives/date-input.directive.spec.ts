@@ -4,7 +4,6 @@ import { FormsModule } from '@angular/forms';
 import { DateInputDirective } from './date-input.directive';
 
 @Component({
-  selector: 'test-component',
   template: `
     <form>
       <input type="date" name="date" [(ngModel)]="date" lcsDateInput />
