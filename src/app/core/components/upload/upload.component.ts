@@ -18,9 +18,9 @@ export class UploadComponent {
 
   constructor(private messageService: MessageService, private router: Router) {}
 
-  onChange({ target }: { target: HTMLInputElement }): void {
+  onChange($event): void {
     this.error = false;
-    this.file = target.files[0];
+    this.file = $event.target.files[0];
     this.text = this.file
       ? `Selected: ${this.file.name}`
       : 'Select a chat log file';
