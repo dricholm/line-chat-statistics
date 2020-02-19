@@ -11,8 +11,8 @@ branches:
 script:
   - npm run lint
   - npm run test:ci
-  - npm run deploy:build:en
-  - npm run deploy:build:ja
+  - npm run build
+  - npm run deploy:cp
 
 after_success:
   - bash <(curl -s https://codecov.io/bash)
@@ -21,6 +21,6 @@ deploy:
   provider: pages
   skip_cleanup: true
   github_token: $GITHUB_TOKEN
-  local_dir: dist
+  local_dir: dist/line-chat-statistics
   on:
     branch: master

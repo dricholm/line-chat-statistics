@@ -7,8 +7,7 @@
       "i18n": {
         "locales": {
           "ja": {
-            "translation": "src/locale/messages.ja.xlf",
-            "baseHref": ""
+            "translation": "src/locale/messages.ja.xlf"
           }
         }
       },
@@ -52,7 +51,6 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "outputPath": "dist/en/",
               "budgets": [
                 {
                   "type": "initial",
@@ -65,34 +63,6 @@
                 }
               ]
             },
-            "production-ja": {
-              "budgets": [
-                {
-                  "type": "anyComponentStyle",
-                  "maximumWarning": "6kb"
-                }
-              ],
-              "fileReplacements": [
-                {
-                  "replace": "src/environments/environment.ts",
-                  "with": "src/environments/environment.prod.ts"
-                }
-              ],
-            "localize": [
-              "ja"
-            ],
-              "optimization": true,
-              "outputHashing": "all",
-              "sourceMap": false,
-              "extractCss": true,
-              "namedChunks": false,
-              "aot": true,
-              "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
-              "outputPath": "dist",
-              "i18nMissingTranslation": "error"
-            },
             "ja": {
               "aot": true,
               "budgets": [
@@ -101,10 +71,7 @@
                   "maximumWarning": "6kb"
                 }
               ],
-            "localize": [
-              "ja"
-            ],
-              "outputPath": "dist",
+              "localize": ["ja"],
               "i18nMissingTranslation": "error"
             }
           }
@@ -132,10 +99,7 @@
         "lint": {
           "builder": "@angular-devkit/build-angular:tslint",
           "options": {
-            "tsConfig": [
-              "tsconfig.app.json",
-              "tsconfig.spec.json",
-            ],
+            "tsConfig": ["tsconfig.app.json", "tsconfig.spec.json"],
             "exclude": ["**/node_modules/**"]
           }
         }
