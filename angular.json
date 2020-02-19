@@ -62,7 +62,7 @@
                   "maximumWarning": "6kb"
                 }
               ],
-              "baseHref": "https://dricholm.github.io/line-chat-statistics"
+              "baseHref": "/line-chat-statistics"
             },
             "ja": {
               "aot": true,
