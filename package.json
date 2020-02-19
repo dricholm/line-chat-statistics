@@ -14,7 +14,7 @@
     "deploy:build:ja": "ng build --prod --base-href=https://dricholm.github.io/line-chat-statistics/ja/ --configuration=production-ja",
     "deploy:ngh": "ngh --no-silent",
     "test": "jest --watch",
-    "test:ci": "jest --runInBand",
+    "test:ci": "jest --ci --coverage",
     "lint": "ng lint",
     "coverage": "jest --coverage",
     "extract": "ng xi18n --output-path=locale"

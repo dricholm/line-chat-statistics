@@ -14,6 +14,9 @@ script:
   - npm run deploy:build:en
   - npm run deploy:build:ja
 
+after_success:
+  - bash <(curl -s https://codecov.io/bash)
+
 deploy:
   provider: pages
   skip_cleanup: true
