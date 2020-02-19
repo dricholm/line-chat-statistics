@@ -4,6 +4,14 @@
   "newProjectRoot": "projects",
   "projects": {
     "line-chat-statistics": {
+      "i18n": {
+        "locales": {
+          "ja": {
+            "translation": "src/locale/messages.ja.xlf",
+            "baseHref": ""
+          }
+        }
+      },
       "projectType": "application",
       "schematics": {
         "@schematics/angular:component": {
@@ -17,6 +25,7 @@
         "build": {
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
+            "aot": true,
             "outputPath": "dist/line-chat-statistics",
             "index": "src/index.html",
             "main": "src/main.ts",
@@ -49,16 +58,29 @@
                   "type": "initial",
                   "maximumWarning": "2mb",
                   "maximumError": "5mb"
+                },
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
                 }
               ]
             },
             "production-ja": {
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
               "fileReplacements": [
                 {
                   "replace": "src/environments/environment.ts",
                   "with": "src/environments/environment.prod.ts"
                 }
               ],
+            "localize": [
+              "ja"
+            ],
               "optimization": true,
               "outputHashing": "all",
               "sourceMap": false,
@@ -68,18 +90,21 @@
               "extractLicenses": true,
               "vendorChunk": false,
               "buildOptimizer": true,
-              "outputPath": "dist/ja/",
-              "i18nFile": "src/locale/messages.ja.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "ja",
+              "outputPath": "dist",
               "i18nMissingTranslation": "error"
             },
             "ja": {
               "aot": true,
-              "outputPath": "dist/ja/",
-              "i18nFile": "src/locale/messages.ja.xlf",
-              "i18nFormat": "xlf",
-              "i18nLocale": "ja",
+              "budgets": [
+                {
+                  "type": "anyComponentStyle",
+                  "maximumWarning": "6kb"
+                }
+              ],
+            "localize": [
+              "ja"
+            ],
+              "outputPath": "dist",
               "i18nMissingTranslation": "error"
             }
           }

@@ -1,22 +1,18 @@
-import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
-import { RouterModule } from '@angular/router';
+import { NgModule } from '@angular/core';
 import { ReactiveFormsModule } from '@angular/forms';
+import { RouterModule } from '@angular/router';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
-import { DateValueAccessorModule } from 'angular-date-value-accessor';
+import { DateInputDirective } from './directives/date-input.directive';
 
 @NgModule({
   exports: [
     RouterModule,
     ReactiveFormsModule,
     NgxChartsModule,
-    DateValueAccessorModule,
+    DateInputDirective,
   ],
-  imports: [
-    CommonModule,
-    ReactiveFormsModule,
-    NgxChartsModule,
-    DateValueAccessorModule,
-  ],
+  imports: [CommonModule, ReactiveFormsModule, NgxChartsModule],
+  declarations: [DateInputDirective],
 })
 export class SharedModule {}
