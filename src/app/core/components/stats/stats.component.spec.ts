@@ -1,18 +1,18 @@
 import {
   async,
   ComponentFixture,
-  TestBed,
   inject,
+  TestBed,
 } from '@angular/core/testing';
-import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { ReactiveFormsModule } from '@angular/forms';
+import { NoopAnimationsModule } from '@angular/platform-browser/animations';
 import { NgxChartsModule } from '@swimlane/ngx-charts';
 
-import { StatsComponent } from './stats.component';
-import { SectionComponent } from '@app/core/components/section/section.component';
-import { MessageService } from '@app/core/services/message.service';
-import { StatCardComponent } from '@app/core/components/stat-card/stat-card.component';
 import { CalendarComponent } from '@app/core/components/calendar/calendar.component';
+import { SectionComponent } from '@app/core/components/section/section.component';
+import { StatCardComponent } from '@app/core/components/stat-card/stat-card.component';
+import { StatsComponent } from '@app/core/components/stats/stats.component';
+import { MessageService } from '@app/core/services/message.service';
 
 describe('StatsComponent', () => {
   let component: StatsComponent;
@@ -27,7 +27,6 @@ describe('StatsComponent', () => {
         CalendarComponent,
       ],
       imports: [NoopAnimationsModule, ReactiveFormsModule, NgxChartsModule],
-      providers: [MessageService],
     }).compileComponents();
   }));
 
@@ -44,11 +43,9 @@ describe('StatsComponent', () => {
   it('should display start date', inject(
     [MessageService],
     (service: MessageService) => {
-      const spy = spyOnProperty(
-        service,
-        'activityLength',
-        'get'
-      ).and.returnValue(1);
+      const spy = jest
+        .spyOn(service, 'activityLength', 'get')
+        .mockReturnValue(1);
       spyOn(service, 'get').and.callFake(() => ({
         author: 'Author',
         date: new Date('2015.03.20'),
@@ -70,11 +67,9 @@ describe('StatsComponent', () => {
   it('should display latest date', inject(
     [MessageService],
     (service: MessageService) => {
-      const spy = spyOnProperty(
-        service,
-        'activityLength',
-        'get'
-      ).and.returnValue(5);
+      const spy = jest
+        .spyOn(service, 'activityLength', 'get')
+        .mockReturnValue(5);
       spyOn(service, 'get').and.callFake(() => ({
         author: 'Author',
         date: new Date('2018.04.26'),
@@ -96,7 +91,7 @@ describe('StatsComponent', () => {
   it('should display day span', inject(
     [MessageService],
     (service: MessageService) => {
-      const spy = spyOnProperty(service, 'daySpan', 'get').and.returnValue(20);
+      const spy = jest.spyOn(service, 'daySpan', 'get').mockReturnValue(20);
 
       fixture.detectChanges();
 

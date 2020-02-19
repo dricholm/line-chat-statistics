@@ -6,15 +6,35 @@
   <div class="file-container">
     <div class="bg-light rounded p-3 file-box">
       <div class="file-upload mr-0 mr-md-3 mb-3 mb-md-0">
-        <input type="file" class="file-input" name="log" (change)="onChange($event)">
-        <button class="file-browse btn btn-info btn-lg btn-block px-5" type="button" i18n="@@browse">
+        <input
+          type="file"
+          class="file-input"
+          name="log"
+          (change)="onChange($event)"
+        />
+        <button
+          class="file-browse btn btn-info btn-lg btn-block px-5"
+          type="button"
+          i18n="@@browse"
+        >
           Browse
         </button>
       </div>
-      <p class="align-self-center file-text mb-3 mb-md-0" [ngClass]="{'text-danger': error}" [@slide]="text" *ngFor="let text of [text]">
+      <p
+        class="align-self-center file-text mb-3 mb-md-0"
+        [ngClass]="{ 'text-danger': error }"
+        [@slide]="text"
+        *ngFor="let text of [text]"
+      >
         {{ text }}
       </p>
-      <button class="file-submit btn btn-primary btn-lg btn-block px-5" type="button" [disabled]="!file" (click)="onParse()" i18n="@@parse">
+      <button
+        class="file-submit btn btn-primary btn-lg btn-block px-5"
+        type="button"
+        [disabled]="!file"
+        (click)="onParse()"
+        i18n="@@parse"
+      >
         Parse
       </button>
     </div>

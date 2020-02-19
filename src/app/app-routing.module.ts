@@ -1,5 +1,5 @@
 import { NgModule } from '@angular/core';
-import { Routes, RouterModule } from '@angular/router';
+import { RouterModule, Routes } from '@angular/router';
 
 import { HomeComponent } from '@app/core/components/home/home.component';
 import { NotFoundComponent } from '@app/core/components/not-found/not-found.component';
@@ -20,6 +20,5 @@ const routes: Routes = [
       scrollPositionRestoration: 'enabled',
     }),
   ],
-  providers: [StatGuard],
 })
 export class AppRoutingModule {}

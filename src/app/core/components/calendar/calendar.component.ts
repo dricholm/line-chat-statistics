@@ -86,6 +86,7 @@ export class CalendarComponent implements OnInit {
     this.hoverDate = this.weeks[week].days[day].date;
     this.hoverCount = this.weeks[week].days[day].activityCount;
     this.hoverStyle.next({
+      display: 'block',
       position: 'absolute',
       'top.px': (week - 1) * 21,
     });

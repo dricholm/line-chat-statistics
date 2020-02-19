@@ -1,6 +1,7 @@
 # Line Chat Statistics
 
 [![Build Status](https://travis-ci.com/dricholm/line-chat-statistics.svg?branch=master)](https://travis-ci.com/dricholm/line-chat-statistics)
+[![codecov](https://codecov.io/gh/dricholm/line-chat-statistics/branch/master/graph/badge.svg)](https://codecov.io/gh/dricholm/line-chat-statistics)
 
 ## Description
 

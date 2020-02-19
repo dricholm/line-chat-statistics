@@ -37,7 +37,7 @@ export class UploadComponent {
       () => {
         this.text = 'Parsing file, please wait';
       },
-      error => {
+      _ => {
         this.text = 'Error during parsing';
         this.file = null;
         this.error = true;
